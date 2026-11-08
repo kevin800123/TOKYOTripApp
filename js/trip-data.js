@@ -1,6 +1,6 @@
 // 預設行程資料。改內容後把 seedVersion +1，沒手動編輯過的手機會自動換成新版。
 const TRIP = {
-    seedVersion: 1,
+    seedVersion: 2,
     checkedOn: '2026/11/8',
     start: '2027-02-07',
     end: '2027-02-13',
@@ -15,7 +15,7 @@ const TRIP = {
 
     days: [
         {
-            id: 1, iso: '2027-02-07', date: '2/7', dow: '日', line: '#5A6B80',
+            id: 1, iso: '2027-02-07', date: '2/7', dow: '日',
             station: '成田', kana: 'なりた', roman: 'Narita', theme: '晚上抵達，直接到上野休息',
             place: 'narita', stay: '上野',
             items: [
@@ -29,13 +29,13 @@ const TRIP = {
             ],
         },
         {
-            id: 2, iso: '2027-02-08', date: '2/8', dow: '一', line: '#0B7A9E',
+            id: 2, iso: '2027-02-08', date: '2/8', dow: '一',
             station: '橫濱', kana: 'よこはま', roman: 'Yokohama', theme: '做一碗自己的杯麵，晚上看港灣',
             place: 'yokohama', stay: '上野',
             items: [
                 { time: '09:30', category: '交通', name: '上野到橫濱港未來', location: 'カップヌードルミュージアム 横浜', transit: '約 1 小時',
                   notes: '上野東京線到橫濱，轉根岸線到櫻木町，再走到博物館。' },
-                { time: '10:30', category: '體驗', icon: '🍜', name: '杯麵博物館：做自己的杯麵', location: 'カップヌードルミュージアム 横浜', task: 'cup', tags: ['週二公休'],
+                { time: '10:30', category: '體驗', mark: '麺', name: '杯麵博物館：做自己的杯麵', location: 'カップヌードルミュージアム 横浜', task: 'cup', tags: ['週二公休'],
                   notes: '10:00-18:00，門票 ¥500，體驗費另計（各站寫 ¥400-500）。\n這裡是博物館，看不到真正的生產線。\n配料選沒有肉的，才能帶回台灣；含肉違規最高罰 100 萬元。' },
                 { time: '13:00', category: '飲食', name: '午餐：橫濱中華街', location: '横浜中華街', notes: '小籠包、港式點心、邊走邊吃。' },
                 { time: '15:00', category: '景點', name: '山下公園、紅磚倉庫散步', location: '横浜赤レンガ倉庫', notes: '從中華街走路就到，沿海岸線往港未來走。' },
@@ -46,8 +46,8 @@ const TRIP = {
             ],
         },
         {
-            id: 3, iso: '2027-02-09', date: '2/9', dow: '二', line: '#2868B0',
-            station: 'GALA 湯澤', kana: 'がーらゆざわ', roman: 'Gala Yuzawa', theme: '滑雪第一天，整天新手課',
+            id: 3, iso: '2027-02-09', date: '2/9', dow: '二',
+            station: '湯澤', kana: 'ゆざわ', roman: 'Gala Yuzawa', theme: '滑雪第一天，整天新手課',
             place: 'yuzawa', stay: '越後湯澤',
             items: [
                 { time: '07:00', category: '住宿', name: '大行李寄放上野飯店', location: '上野駅', notes: '今晚住越後湯澤，明晚再回同一間飯店。' },
@@ -64,8 +64,8 @@ const TRIP = {
             ],
         },
         {
-            id: 4, iso: '2027-02-10', date: '2/10', dow: '三', line: '#2868B0',
-            station: 'GALA 湯澤', kana: 'がーらゆざわ', roman: 'Gala Yuzawa', theme: '滑雪第二天，自己試試看',
+            id: 4, iso: '2027-02-10', date: '2/10', dow: '三',
+            station: '湯澤', kana: 'ゆざわ', roman: 'Gala Yuzawa', theme: '滑雪第二天，自己試試看',
             place: 'yuzawa', stay: '上野',
             items: [
                 { time: '08:30', category: '住宿', name: '退房，前往 GALA', location: 'ガーラ湯沢駅', transit: '約 10 分', notes: '小包帶到 GALA 寄物，下午直接從雪場回東京。' },
@@ -79,7 +79,7 @@ const TRIP = {
             ],
         },
         {
-            id: 5, iso: '2027-02-11', date: '2/11', dow: '四', line: '#B23A6B',
+            id: 5, iso: '2027-02-11', date: '2/11', dow: '四',
             station: '下北澤', kana: 'しもきたざわ', roman: 'Shimokitazawa', theme: '古著巷弄，晚上搭屋形船',
             place: 'tokyo', stay: '上野', holiday: '建國紀念日',
             items: [
@@ -89,36 +89,36 @@ const TRIP = {
                 { time: '15:00', category: '交通', name: '下北澤到代官山', location: '代官山駅', transit: '約 25 分', notes: '井之頭線到澀谷，轉東急東橫線一站。' },
                 { time: '15:30', category: '景點', name: '代官山散步、蔦屋書店', location: '代官山 蔦屋書店' },
                 { time: '17:15', category: '交通', name: '前往品川上船', location: '北品川', transit: '約 30 分', notes: '碼頭離車站要走 10 分鐘以上，抓寬一點。' },
-                { time: '18:00', category: '體驗', icon: '🚢', name: '屋形船晚餐，東京灣夜景', location: '北品川 屋形船', task: 'yakata', tags: ['特別體驗'],
+                { time: '18:00', category: '體驗', mark: '船', name: '屋形船晚餐，東京灣夜景', location: '北品川 屋形船', task: 'yakata', tags: ['特別體驗'],
                   notes: '含餐和喝到飽，約 2 到 2.5 小時，每人約 ¥12,000-13,200。\n上船時間以訂位為準，併船可能有最低成行人數。' },
                 { time: '21:00', category: '交通', name: '回上野', location: '上野駅', transit: '約 30 分' },
             ],
         },
         {
-            id: 6, iso: '2027-02-12', date: '2/12', dow: '五', line: '#A0620E',
+            id: 6, iso: '2027-02-12', date: '2/12', dow: '五',
             station: '白州', kana: 'はくしゅう', roman: 'Hakushu', theme: '森林裡的蒸溜所，夜晚神樂坂',
             place: 'hakushu', stay: '上野',
             items: [
                 { time: '07:30', category: '交通', name: '上野到新宿', location: '新宿駅', transit: '約 25 分' },
                 { time: '08:00', category: '交通', name: '特急 Azusa：新宿到小淵澤', location: '小淵沢駅', transit: '約 2 小時', task: 'azusa' },
                 { time: '10:30', category: '交通', name: '免費接駁車到蒸溜所', location: 'サントリー白州蒸溜所', transit: '接駁', notes: '滿座上不了車，要自己叫計程車，出發前看官網時刻表。' },
-                { time: '11:00', category: '體驗', icon: '🥃', name: '白州蒸溜所參觀試飲', location: 'サントリー白州蒸溜所', task: 'hakushu', tags: ['需預約'],
+                { time: '11:00', category: '體驗', mark: '酒', name: '白州蒸溜所參觀試飲', location: 'サントリー白州蒸溜所', task: 'hakushu', tags: ['需預約'],
                   notes: '沒預約不能入場，導覽時間以預約為準。\n抽不到或沒開，備案是御殿場的麒麟蒸溜所（週一休、要預約）。' },
                 { time: '13:00', category: '購物', name: '午餐、博物館、買限定酒', location: 'サントリー白州蒸溜所', notes: '想帶酒回台灣要有託運行李，免稅上限 1.5 公升。' },
                 { time: '15:00', category: '交通', name: '小淵澤回新宿', location: '新宿駅', transit: '約 2 小時', task: 'azusa' },
                 { time: '17:30', category: '交通', name: '新宿到飯田橋', location: '飯田橋駅', transit: '約 15 分', notes: '總武線，出站就是神樂坂下。' },
                 { time: '18:00', category: '飲食', name: '神樂坂巷弄晚餐', location: '神楽坂 かくれんぼ横丁', notes: '石板小巷裡有不少小店，熱門店先訂位。' },
-                { time: '20:00', category: '體驗', icon: '🥃', name: '威士忌吧 Mizunara', location: 'Mizunara 神楽坂 bar', task: 'mizunara', tags: ['特別體驗'], notes: '專賣日本威士忌，查到的資料寫週日和假日公休。' },
+                { time: '20:00', category: '體驗', mark: '酒', name: '威士忌吧 Mizunara', location: 'Mizunara 神楽坂 bar', task: 'mizunara', tags: ['特別體驗'], notes: '專賣日本威士忌，查到的資料寫週日和假日公休。' },
                 { time: '22:00', category: '交通', name: '回上野', location: '上野駅', transit: '約 25 分', notes: '明早相撲要早起，別喝太晚。' },
             ],
         },
         {
-            id: 7, iso: '2027-02-13', date: '2/13', dow: '六', line: '#BF3A2B',
+            id: 7, iso: '2027-02-13', date: '2/13', dow: '六',
             station: '兩國', kana: 'りょうごく', roman: 'Ryogoku', theme: '相撲晨練，下午飛回台灣',
             place: 'tokyo', stay: '回台灣',
             items: [
                 { time: '07:00', category: '交通', name: '上野到兩國', location: '両国駅', transit: '約 20 分', notes: '集合時間以預約為準。' },
-                { time: '07:30', category: '體驗', icon: '🤼', name: '看相撲部屋晨練', location: '両国駅', task: 'sumo', tags: ['特別體驗'],
+                { time: '07:30', category: '體驗', mark: '相', name: '看相撲部屋晨練', location: '両国駅', task: 'sumo', tags: ['特別體驗'],
                   notes: '全程要安靜，遵守導覽的規定。\n部屋的時間不固定，沒場次就改睡飽再逛阿美橫町。' },
                 { time: '10:15', category: '交通', name: '回上野', location: '上野駅', transit: '約 20 分' },
                 { time: '10:30', category: '購物', name: '阿美橫町補貨', location: 'アメヤ横丁', notes: '肉乾、含肉零食不要買，帶不回台灣。' },

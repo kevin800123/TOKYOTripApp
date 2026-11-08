@@ -1,5 +1,5 @@
 // 改任何檔案後，把 VERSION +1，手機下次開啟就會換新。
-const VERSION = 'v1';
+const VERSION = 'v2';
 const CACHE = `tokyo-trip-${VERSION}`;
 const FONT_CACHE = 'tokyo-trip-fonts';
 const SHELL = [

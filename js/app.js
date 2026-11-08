@@ -1,7 +1,8 @@
 (() => {
-    const ICONS = { 飲食: '🍜', 景點: '⛩️', 購物: '🛍️', 交通: '🚃', 滑雪: '⛷️', 體驗: '🎫', 住宿: '🏨', 其他: '📌' };
+    const MARKS = { 飲食: '食', 景點: '景', 購物: '買', 交通: '移', 滑雪: '雪', 體驗: '体', 住宿: '宿', 其他: '他' };
+    const NTH = ['一', '二', '三', '四', '五', '六', '七'];
     const openLabel = (name) => (/^[A-Za-z]/.test(name) ? `打開 ${name}` : `打開${name}`);
-    const CATEGORIES = Object.keys(ICONS);
+    const CATEGORIES = Object.keys(MARKS);
 
     const state = { view: 'plan', dayId: 1, nextId: null };
     const $ = (sel) => document.querySelector(sel);
@@ -72,19 +73,16 @@
         badge.textContent = count;
         badge.hidden = count === 0;
         $('#fab').hidden = state.view !== 'plan';
-        $('#route').hidden = state.view !== 'plan';
-        const day = currentDay();
-        document.documentElement.style.setProperty('--line', day.line);
+        $('#days').hidden = state.view !== 'plan';
     }
 
-    function renderRoute() {
+    function renderDayTabs() {
         const today = jstNow().iso;
-        $('#route').innerHTML = `<ol>${Store.days().map((day) => `
+        $('#days').innerHTML = `<ol>${Store.days().map((day) => `
             <li>
-                <button class="stop" data-action="day" data-day="${day.id}" ${day.id === state.dayId ? 'aria-current="true"' : ''} style="--stop:${day.line}">
-                    <span class="stop-date">${day.date}</span>
-                    <span class="stop-dot ${day.iso === today ? 'today' : ''}"></span>
-                    <span class="stop-name">${esc(day.station.replace('GALA ', ''))}</span>
+                <button class="day-tab ${day.iso === today ? 'is-today' : ''}" data-action="day" data-day="${day.id}" ${day.id === state.dayId ? 'aria-current="true"' : ''}>
+                    <span class="day-date">${day.date}</span>
+                    <span class="day-name">${esc(day.station)}</span>
                 </button>
             </li>`).join('')}</ol>`;
     }
@@ -98,7 +96,6 @@
             const fetched = new Date(w.fetchedAt).toLocaleString('zh-TW', { month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false });
             return `
                 <div class="weather">
-                    <span class="weather-icon" aria-hidden="true">${w.icon}</span>
                     <div class="weather-main">
                         <strong>${esc(w.text)}　${Math.round(w.min)}° 到 ${Math.round(w.max)}°C</strong>
                         <span>${esc(place)}，降雨 ${w.pop ?? '?'}%${w.snow > 0 ? `，降雪 ${Math.round(w.snow)} 公分` : ''}</span>
@@ -130,9 +127,10 @@
             <li class="row ${isTransit ? 'row-transit' : ''} ${isNext ? 'row-next' : ''}">
                 <button class="row-btn" data-action="detail" data-item="${esc(item.id)}">
                     <time class="row-time">${esc(item.time)}</time>
+                    <span class="mark" aria-hidden="true">${esc(item.mark || MARKS[item.category] || '他')}</span>
                     <span class="row-body">
                         ${isNext ? '<span class="next-label">下一站</span>' : ''}
-                        <span class="row-title"><span aria-hidden="true">${item.icon || ICONS[item.category] || '📌'}</span> ${esc(item.name)}${item.transit ? `<span class="row-transit-time">${esc(item.transit)}</span>` : ''}</span>
+                        <span class="row-title">${esc(item.name)}${item.transit ? `<span class="row-transit-time">${esc(item.transit)}</span>` : ''}</span>
                         ${item.notes && !isTransit ? `<span class="row-notes">${esc(item.notes.split('\n')[0])}</span>` : ''}
                         ${taskBadge || tags ? `<span class="row-badges">${taskBadge}${tags}</span>` : ''}
                     </span>
@@ -144,24 +142,25 @@
         const days = Store.days();
         const index = days.findIndex((d) => d.id === state.dayId);
         const day = days[index];
-        const prev = days[index - 1];
-        const next = days[index + 1];
+        const [month, date] = day.date.split('/');
         state.nextId = nextItemId(day);
 
         main.innerHTML = `
             <div class="plan">
                 <div class="plan-head">
-                    <section class="plate" style="--line:${day.line}">
-                        <p class="plate-kana">${esc(day.kana)}</p>
-                        <h1 class="plate-name">${esc(day.station)}</h1>
-                        <p class="plate-roman">${esc(day.roman)}</p>
-                        <div class="plate-bar"><span class="plate-mark"><b>${day.date}</b><small>週${day.dow}</small></span></div>
-                        <div class="plate-ends">
-                            ${prev ? `<button data-action="day" data-day="${prev.id}">‹ ${prev.date} ${esc(prev.station)}</button>` : '<span>從桃園出發</span>'}
-                            ${next ? `<button data-action="day" data-day="${next.id}">${next.date} ${esc(next.station)} ›</button>` : '<span>回桃園</span>'}
+                    <section class="hero">
+                        <div class="hero-text">
+                            <p class="hero-date">${month}月${date}日 週${day.dow}</p>
+                            <p class="hero-roman">${esc(day.roman)}</p>
+                            <p class="hero-theme">${esc(day.theme).split('，').join('，<br>')}${day.holiday ? `<span class="holiday">日本假日：${esc(day.holiday)}</span>` : ''}</p>
+                        </div>
+                        <div class="hero-title">
+                            <h1 class="hero-name">${esc(day.station)}</h1>
+                            <span class="hero-kana">${esc(day.kana)}</span>
+                            <span class="seal">${NTH[index]}日目</span>
                         </div>
                     </section>
-                    <p class="theme">${esc(day.theme)}${day.holiday ? `<span class="holiday">日本假日：${esc(day.holiday)}</span>` : ''}</p>
+                    <div class="wave" aria-hidden="true"></div>
                     ${weatherHtml(day)}
                 </div>
                 <div class="plan-list">
@@ -243,7 +242,7 @@
 
     function render() {
         if (state.view === 'plan') {
-            renderRoute();
+            renderDayTabs();
             renderPlan();
         } else if (state.view === 'prep') {
             renderPrep();
@@ -315,7 +314,7 @@
                     </label>
                 </div>
                 <label>類別
-                    <select name="category">${CATEGORIES.map((c) => `<option value="${c}" ${(item?.category ?? '飲食') === c ? 'selected' : ''}>${ICONS[c]} ${c}</option>`).join('')}</select>
+                    <select name="category">${CATEGORIES.map((c) => `<option value="${c}" ${(item?.category ?? '飲食') === c ? 'selected' : ''}>${c}</option>`).join('')}</select>
                 </label>
                 <label>名稱
                     <input type="text" name="name" value="${esc(item?.name ?? '')}" required>
