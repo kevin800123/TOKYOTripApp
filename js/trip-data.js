@@ -141,8 +141,8 @@ const TRIP = {
           detail: '上一季私人課 12/1 開放預約。GALA 有沒有中文教練還查不到；沒有的話，岩原、中里有中英文私人課，Klook 標價 ¥33,000 含租借接送。' },
         { id: 'hotel-yuzawa', title: '訂越後湯澤 2/9 一晚', due: '2026-12-15', detail: '選車站附近、有大浴場的旅館，雪季平日也可能客滿。' },
         { id: 'hotel-ueno', title: '訂上野飯店 2/7-9、2/10-13', due: '2026-12-15', detail: '分兩段訂同一間，並先問 2/9 能不能寄放行李。' },
-        { id: 'hakushu', title: '預約白州蒸溜所 2/12', due: '2026-12-31', url: 'https://www.suntory.co.jp/factory/hakushu/', urlLabel: '白州官網',
-          detail: '沒預約不能入場，有資料說導覽是抽選制。2027 年 2 月的開放日還查不到，現在就開始留意。' },
+        { id: 'hakushu', title: '登記白州蒸溜所 2/12 導覽抽選', due: '2026-12-01', url: 'https://www.suntory.co.jp/factory/hakushu/', urlLabel: '白州官網',
+          detail: '製造現場導覽每人約 ¥3,000，要抽選。第三方指南寫 1 月場 11/6 到 11/10 登記，2 月場官方還沒公布，推估 12 月上旬，11 月底起看官網。沒抽到可以另外預約免費入場，逛博物館和商店。' },
         { id: 'yakata', title: '訂 2/11 屋形船併船', due: '2027-01-15', url: 'https://www.veltra.com/jp/japan/tokyo/a/119873', urlLabel: '三河屋方案',
           detail: '先確認 2/11 有開船。品川的候選有三河屋、大江戸、石川丸。' },
         { id: 'sumo', title: '訂 2/13 相撲晨練', due: '2027-01-15', url: 'https://www.magical-trip.com/product/152592f3-9507-430b-a717-7483840a59d9', urlLabel: '導覽方案',
@@ -161,6 +161,51 @@ const TRIP = {
         { id: 'vjw', title: '填 Visit Japan Web', due: '2027-02-05', url: 'https://services.digital.go.jp/en/visit-japan-web/', urlLabel: 'Visit Japan Web', detail: '兩人各填一份，把入境和海關的 QR Code 截圖。' },
         { id: 'mizunara', title: '確認 Mizunara 2/12 有營業', due: '2027-02-05', url: 'https://www.timeout.com/tokyo/bars-and-pubs/mizunara-in-tokyo', urlLabel: 'Time Out 介紹', detail: '營業資訊可能較舊，出發前再查一次。' },
     ],
+
+    // 金額都是兩人合計的日圓。checked: true 表示查得到價格來源，其餘是估算。
+    budget: {
+        checkedOn: '2026/11/9',
+        rate: 0.215,
+        rateNote: '1 日圓以 0.215 台幣換算。臺灣銀行 11/2 到 11/6 的現金賣出約 0.210 到 0.213，抓寬一點。',
+        groups: [
+            { name: '住宿', items: [
+                { name: '上野飯店 5 晚', low: 75000, high: 125000, note: '雙人房每晚抓 ¥15,000 到 ¥25,000，2/11 是假日可能較貴。' },
+                { name: '越後湯澤 1 晚', low: 26000, high: 44000, note: '查到一家旅館每人約 ¥14,300 到 ¥15,400。訂含晚餐的方案，下面的晚餐可以少算一餐。' },
+            ] },
+            { name: '交通', items: [
+                { name: 'Skyliner 來回', low: 9000, high: 10400, checked: true, note: '官網票來回每人約 ¥4,500，現場買會貴一點。' },
+                { name: '新幹線：上野到 GALA 來回', low: 28000, high: 30000, note: '單程每人約 ¥7,000，由 2023 年的票價推算，2026 年 3 月有調價。' },
+                { name: '特急 Azusa：新宿到小淵澤來回', low: 19000, high: 21000, note: '查到新宿到前一站韮崎單程 ¥4,330，小淵澤再多一點。' },
+                { name: '秩父一日的電車', low: 6000, high: 8000, note: 'Laview 池袋到西武秩父每人 ¥1,700，加上回程和上野池袋間。' },
+                { name: '東京市內 Suica、雪場短程', low: 10000, high: 14000, note: '每人每天抓 ¥700 到 ¥1,000。' },
+            ] },
+            { name: '滑雪', items: [
+                { name: '雪票 4 張', low: 19200, high: 32000, checked: true, note: '11/30 前早鳥每張 ¥4,800，之後官網 ¥7,500、現場 ¥8,000。' },
+                { name: '租雪具和雪衣褲，兩人兩天', low: 26000, high: 48000, note: '查到雪具一套每人每天 ¥6,500，不確定是哪一季的價格，雪衣褲另計。' },
+                { name: '新手課', low: 20000, high: 45000, note: '團體課和私人課差很多，GALA 這季的價格還查不到。' },
+            ] },
+            { name: '體驗', items: [
+                { name: '祭の湯溫泉', low: 2200, high: 3000, checked: true, note: '平日每人 ¥1,100，毛巾另計。' },
+                { name: '芦ヶ久保冰柱', low: 600, high: 1000, note: '這次查不到現場費用，先抓每人 ¥300 到 ¥500。' },
+                { name: '屋形船晚餐', low: 24000, high: 26400, checked: true, note: '併船方案每人 ¥12,000 到 ¥13,200，含餐和喝到飽。' },
+                { name: '白州蒸溜所導覽', low: 6000, high: 6000, checked: true, note: '第三方指南寫每人 ¥3,000，以官網為準。' },
+                { name: '相撲晨練導覽', low: 18000, high: 32000, checked: true, note: '導覽方案每人 ¥9,000 到 ¥16,000。' },
+            ] },
+            { name: '餐飲', items: [
+                { name: '早餐 6 天', low: 6000, high: 12000, note: '超商或咖啡店，每人每餐 ¥500 到 ¥1,000。' },
+                { name: '午餐 6 餐', low: 14400, high: 30000, note: '每人每餐 ¥1,200 到 ¥2,500，雪場偏貴。' },
+                { name: '晚餐和宵夜 5 餐', low: 25000, high: 60000, note: '不含屋形船，每人每餐 ¥2,500 到 ¥6,000。' },
+                { name: 'Mizunara 威士忌吧', low: 6000, high: 16000, note: '每人抓 2 到 3 杯，稀有酒款會貴很多。' },
+                { name: '咖啡和零食', low: 7000, high: 14000, note: '每人每天 ¥500 到 ¥1,000。' },
+            ] },
+            { name: '其他', items: [
+                { name: '旅平險，要涵蓋滑雪', low: 7000, high: 14000, note: '依保額和方案而定。' },
+                { name: 'eSIM 或分享器', low: 3000, high: 6000, note: '兩人 7 天。' },
+                { name: '樂桃託運行李', low: 0, high: 9000, note: '機票沒含託運、又要帶威士忌回台灣才需要。' },
+                { name: '伴手禮、威士忌', low: 20000, high: 60000, note: '最有彈性的一項，白州限定酒和藥妝看你們買多少。' },
+            ] },
+        ],
+    },
 
     packing: [
         { group: '滑雪', items: ['保暖內衣褲 2 套', '刷毛中層衣', '長筒滑雪襪 2 雙', '防水手套', '毛帽或頭套', '雪鏡或太陽眼鏡', '護唇膏、防曬', '雪衣褲（要租的話先看 GALA 租借項目）'] },

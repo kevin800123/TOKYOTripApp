@@ -253,6 +253,20 @@ ol, ul { list-style: none; }
 .chip { display: inline-block; font-size: 12px; color: var(--text-light); }
 .chip.urgent { color: var(--shu); font-weight: 700; }
 
+.budget-total { margin-top: 16px; padding: 16px 0 14px; border-block: 1px solid var(--text-color); }
+.budget-label { font-size: 13px; color: var(--text-light); }
+.budget-main { margin-top: 2px; font-family: 'Noto Serif JP', serif; font-size: 32px; font-weight: 600; line-height: 1.3; font-variant-numeric: tabular-nums; }
+.budget-sub { font-size: 13px; color: var(--text-light); font-variant-numeric: tabular-nums; }
+.budget-range { display: flex; gap: 32px; margin-top: 12px; }
+.budget-range dt { font-size: 12px; color: var(--text-light); }
+.budget-range dd { margin: 0; font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.budget-flight { margin-top: 10px; font-size: 13px; color: var(--shu); }
+.budget-list li { padding: 10px 0; border-bottom: 1px dotted var(--border-strong); }
+.budget-row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.budget-name { min-width: 0; font-size: 14px; font-weight: 500; }
+.budget-name .badge { margin-left: 6px; font-weight: 400; white-space: nowrap; }
+.budget-amount { flex: none; font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.budget-list p { margin-top: 2px; font-size: 12px; line-height: 1.6; color: var(--text-light); }
 .flight { display: flex; flex-direction: column; padding: 10px 0; border-bottom: 1px dotted var(--border-strong); }
 .flight b { font-family: 'Noto Serif JP', serif; font-weight: 600; }
 .flight span { font-size: 13px; color: var(--text-light); }

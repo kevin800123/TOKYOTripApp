@@ -218,6 +218,49 @@
             </div>`;
     }
 
+    const yen = (n) => `¥${n.toLocaleString('en-US')}`;
+    const yenRange = (low, high) => (low === high ? yen(low) : `${yen(low)} 到 ${yen(high)}`);
+    const twd = (jpy) => `NT$${(Math.round((jpy * TRIP.budget.rate) / 1000) * 1000).toLocaleString('en-US')}`;
+    const sumBy = (items, key) => items.reduce((total, item) => total + item[key], 0);
+
+    function renderBudget() {
+        const { groups, rateNote, checkedOn } = TRIP.budget;
+        const all = groups.flatMap((g) => g.items);
+        const low = sumBy(all, 'low');
+        const high = sumBy(all, 'high');
+        const mid = (low + high) / 2;
+        main.innerHTML = `
+            <div class="page">
+                <h1>旅費預算</h1>
+                <section class="budget-total">
+                    <p class="budget-label">兩人合計，建議先抓</p>
+                    <p class="budget-main">約 ${twd(mid)}</p>
+                    <p class="budget-sub">約 ${yen(Math.round(mid / 10000) * 10000)}，每人約 ${twd(mid / 2)}</p>
+                    <dl class="budget-range">
+                        <div><dt>省一點</dt><dd>${twd(low)}</dd></div>
+                        <div><dt>寬鬆一點</dt><dd>${twd(high)}</dd></div>
+                    </dl>
+                    <p class="budget-flight">機票沒有算在內。</p>
+                </section>
+                ${groups.map((group) => `
+                    <section>
+                        <h2>${esc(group.name)}<span class="count">${yenRange(sumBy(group.items, 'low'), sumBy(group.items, 'high'))}</span></h2>
+                        <ul class="budget-list">${group.items.map((item) => `
+                            <li>
+                                <div class="budget-row">
+                                    <span class="budget-name">${esc(item.name)}${item.checked ? '' : '<span class="badge">估算</span>'}</span>
+                                    <span class="budget-amount">${yenRange(item.low, item.high)}</span>
+                                </div>
+                                <p>${esc(item.note)}</p>
+                            </li>`).join('')}
+                        </ul>
+                    </section>`).join('')}
+                <section>
+                    <p class="note">金額是兩人合計。${esc(rateNote)}價格查於 ${esc(checkedOn)}，標「估算」的項目沒有查到確切價格，訂好後以實際金額為準。</p>
+                </section>
+            </div>`;
+    }
+
     function renderInfo() {
         main.innerHTML = `
             <div class="page">
@@ -259,6 +302,8 @@
             renderPlan();
         } else if (state.view === 'prep') {
             renderPrep();
+        } else if (state.view === 'budget') {
+            renderBudget();
         } else {
             renderInfo();
         }
