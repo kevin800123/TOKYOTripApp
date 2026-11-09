@@ -15,6 +15,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        // 放在 HTML 裡，外部 JS 出錯也照常更新。新版接手後重載一次，首次安裝不重載。
+        if ('serviceWorker' in navigator) {
+            const hadController = Boolean(navigator.serviceWorker.controller);
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                if (hadController) location.reload();
+            });
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
 </head>
 <body>
     <div id="app">

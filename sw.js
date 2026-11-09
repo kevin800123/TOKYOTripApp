@@ -1,5 +1,6 @@
-// 改任何檔案後，把 VERSION +1，手機下次開啟就會換新。
-const VERSION = 'v2';
+// 改任何檔案後，把 VERSION +1，手機下次開啟就會換新。沒改版號，手機會一直用舊版。
+// 同一版的 HTML、CSS、JS 一律從同一份快取提供，避免新 HTML 配舊 JS 造成空白。
+const VERSION = 'v3';
 const CACHE = `tokyo-trip-${VERSION}`;
 const FONT_CACHE = 'tokyo-trip-fonts';
 const SHELL = [
@@ -18,42 +19,30 @@ const SHELL = [
 ];
 
 self.addEventListener('install', (event) => {
-    event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
-});
-
-self.addEventListener('activate', (event) => {
-    // 只清自己的舊快取，同網域的福岡版不受影響。
+    // cache: 'reload' 略過瀏覽器的 HTTP 快取，GitHub Pages 有 10 分鐘 max-age，否則新版快取可能裝到舊檔。
     event.waitUntil(
-        caches.keys()
-            .then((keys) => Promise.all(keys
-                .filter((key) => key.startsWith('tokyo-trip-') && key !== CACHE && key !== FONT_CACHE)
-                .map((key) => caches.delete(key))))
-            .then(() => self.clients.claim()),
+        caches.open(CACHE)
+            .then((cache) => cache.addAll(SHELL.map((url) => new Request(url, { cache: 'reload' }))))
+            .then(() => self.skipWaiting()),
     );
 });
 
-async function networkFirst(request) {
-    const cache = await caches.open(CACHE);
-    try {
-        const response = await fetch(request);
-        if (response.ok) await cache.put(request, response.clone());
-        return response;
-    } catch (error) {
-        const cached = await cache.match(request, { ignoreSearch: true });
-        return cached || cache.match('index.html');
-    }
-}
+self.addEventListener('activate', (event) => {
+    event.waitUntil((async () => {
+        // 只清自己的舊快取，同網域的福岡版不受影響。
+        const old = (await caches.keys()).filter((key) => key.startsWith('tokyo-trip-') && key !== CACHE && key !== FONT_CACHE);
+        await Promise.all(old.map((key) => caches.delete(key)));
+        // 接手後由 index.html 的 controllerchange 重載開著的舊畫面。
+        await self.clients.claim();
+    })());
+});
 
-async function staleWhileRevalidate(request) {
+async function fromShell(request) {
     const cache = await caches.open(CACHE);
     const cached = await cache.match(request, { ignoreSearch: true });
-    const update = fetch(request)
-        .then((response) => {
-            if (response.ok) cache.put(request, response.clone());
-            return response;
-        })
-        .catch(() => cached);
-    return cached || update;
+    if (cached) return cached;
+    if (request.mode === 'navigate') return cache.match('index.html');
+    return fetch(request);
 }
 
 async function cacheFirstFont(request) {
@@ -76,5 +65,5 @@ self.addEventListener('fetch', (event) => {
     }
     if (url.origin !== self.location.origin) return;
 
-    event.respondWith(request.mode === 'navigate' ? networkFirst(request) : staleWhileRevalidate(request));
+    event.respondWith(fromShell(request));
 });

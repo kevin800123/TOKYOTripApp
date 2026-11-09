@@ -475,8 +475,4 @@
     Weather.refresh(jstNow().iso).then((changed) => {
         if (changed && !sheet.open) render();
     });
-
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').catch(() => {});
-    }
 })();
