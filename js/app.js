@@ -140,6 +140,13 @@
             </li>`;
     }
 
+    function dayStepButton(target, label, path) {
+        const attrs = target
+            ? `data-action="day" data-day="${target.id}" aria-label="${label}：${esc(target.date)} ${esc(target.station)}"`
+            : `disabled aria-label="${label}：沒有了"`;
+        return `<button class="day-step-btn" ${attrs}><svg viewBox="0 0 18 18" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg></button>`;
+    }
+
     function renderPlan() {
         const days = Store.days();
         const index = days.findIndex((d) => d.id === state.dayId);
@@ -170,6 +177,10 @@
                         : '<div class="empty"><p>這天還沒有行程</p><button class="btn solid" data-action="add">新增第一個行程</button></div>'}
                     <p class="stay">今晚住：${esc(day.stay)}</p>
                 </div>
+                <nav class="day-step" aria-label="切換前後天">
+                    ${dayStepButton(days[index - 1], '前一天', 'M4 11l5-5 5 5')}
+                    ${dayStepButton(days[index + 1], '後一天', 'M4 7l5 5 5-5')}
+                </nav>
             </div>`;
     }
 

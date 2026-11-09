@@ -190,6 +190,20 @@ ol, ul { list-style: none; }
 .empty .btn { margin-top: 12px; display: inline-block; width: auto; padding: 0 20px; }
 
 /* 新增鈕與底部分頁 */
+.day-step {
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    left: max(0px, calc(50% - 524px));
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+.day-step-btn { width: 32px; height: 48px; display: flex; align-items: center; justify-content: center; color: var(--text-color); opacity: .32; transition: opacity .15s; }
+.day-step-btn:active, .day-step-btn:focus-visible { opacity: .9; }
+.day-step-btn:disabled { opacity: .1; }
+@media (hover: hover) { .day-step-btn:not(:disabled):hover { opacity: .9; } }
+
 .fab {
     position: fixed;
     right: max(16px, calc(50% - 264px));
