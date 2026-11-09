@@ -170,6 +170,8 @@ ol, ul { list-style: none; }
 .row-transit-time { margin-left: 8px; font-family: 'Noto Sans JP', sans-serif; font-size: 12px; font-weight: 400; color: var(--text-light); white-space: nowrap; }
 .row-notes { font-size: 13px; color: var(--text-light); line-height: 1.6; }
 .row-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
+.row-thumb { flex: none; width: 72px; height: 72px; margin-left: 12px; object-fit: cover; border-radius: var(--radius); background: var(--border-color); }
+@media (max-width: 359px) { .row-thumb { width: 60px; height: 60px; margin-left: 8px; } }
 
 .row-transit .row-btn { padding: 5px 0; min-height: 36px; }
 .row-transit .row-time { color: var(--text-light); font-weight: 400; font-size: 13px; }
@@ -286,7 +288,13 @@ ol, ul { list-style: none; }
 .sheet-head h2 { font-size: 20px; line-height: 1.4; }
 .sheet-time { font-size: 13px; color: var(--text-light); font-variant-numeric: tabular-nums; }
 .close { flex: none; width: 40px; height: 40px; margin: -6px -8px 0 0; font-size: 24px; font-weight: 300; line-height: 1; color: var(--text-light); }
+.sheet-photo { margin: -18px -16px 0; }
+.sheet-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--border-color); }
+.sheet-photo figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; padding: 6px 16px 0; font-size: 11px; line-height: 1.5; color: var(--text-light); }
+.sheet-photo figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.sheet-intro { font-size: 15px; line-height: 1.8; }
 .sheet-notes { white-space: pre-wrap; font-size: 14px; line-height: 1.75; }
+.sheet-intro + .sheet-notes { padding-top: 12px; border-top: 1px dotted var(--border-strong); color: var(--text-light); }
 .sheet-task { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-block: 1px dotted var(--border-strong); font-size: 14px; font-weight: 500; cursor: pointer; }
 .sheet-task input { flex: none; width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--text-color); }
 .sheet-task small { display: block; color: var(--shu); font-size: 12px; font-weight: 700; }

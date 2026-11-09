@@ -116,7 +116,8 @@
     }
 
     function itemHtml(item) {
-        const isTransit = item.category === '交通' && !item.fixed;
+        const spot = SPOTS[item.spot];
+        const isTransit = item.category === '交通' && !item.fixed && !spot;
         const task = item.task ? TRIP.tasks.find((t) => t.id === item.task) : null;
         const taskBadge = task ? (Store.isChecked(task.id)
             ? '<span class="badge done">已訂</span>'
@@ -134,6 +135,7 @@
                         ${item.notes && !isTransit ? `<span class="row-notes">${esc(item.notes.split('\n')[0])}</span>` : ''}
                         ${taskBadge || tags ? `<span class="row-badges">${taskBadge}${tags}</span>` : ''}
                     </span>
+                    ${spot ? `<img class="row-thumb" src="${esc(spot.photo)}" alt="" width="72" height="72" loading="lazy" decoding="async">` : ''}
                 </button>
             </li>`;
     }
@@ -274,7 +276,13 @@
         if (!item) return;
         const task = item.task ? TRIP.tasks.find((t) => t.id === item.task) : null;
         const destination = encodeURIComponent(item.location || item.name);
+        const spot = SPOTS[item.spot];
         sheetBody.innerHTML = `
+            ${spot ? `
+                <figure class="sheet-photo">
+                    <img src="${esc(spot.photo)}" alt="${esc(spot.name)}" width="800" height="450">
+                    <figcaption>${esc(spot.name)}${spot.sample ? '（示意照片）' : ''}<a href="${esc(spot.credit.url)}" target="_blank" rel="noopener">照片：${esc(spot.credit.author)}／${esc(spot.credit.license)}</a></figcaption>
+                </figure>` : ''}
             <header class="sheet-head">
                 <div>
                     <p class="sheet-time">${esc(item.time)}　${esc(item.category)}${item.transit ? `　${esc(item.transit)}` : ''}</p>
@@ -282,6 +290,7 @@
                 </div>
                 <button class="close" data-action="close" aria-label="關閉">×</button>
             </header>
+            ${spot ? `<p class="sheet-intro">${esc(spot.intro)}</p>` : ''}
             ${item.notes ? `<p class="sheet-notes">${esc(item.notes)}</p>` : ''}
             ${task ? `
                 <label class="sheet-task">
@@ -322,6 +331,12 @@
                 <label>地圖搜尋關鍵字
                     <input type="text" name="location" value="${esc(item?.location ?? '')}" placeholder="留空就用名稱搜尋">
                 </label>
+                <label>照片與介紹
+                    <select name="spot">
+                        <option value="">不顯示</option>
+                        ${Object.entries(SPOTS).map(([key, s]) => `<option value="${key}" ${item?.spot === key ? 'selected' : ''}>${esc(s.name)}</option>`).join('')}
+                    </select>
+                </label>
                 <label>備註
                     <textarea name="notes" rows="4">${esc(item?.notes ?? '')}</textarea>
                 </label>
@@ -340,7 +355,7 @@
             error.hidden = false;
             return;
         }
-        const payload = { time: data.time, category: data.category, name, location: data.location.trim(), notes: data.notes.trim() };
+        const payload = { time: data.time, category: data.category, name, location: data.location.trim(), notes: data.notes.trim(), spot: data.spot };
         const target = Number(data.day);
         const itemId = form.dataset.item;
         if (itemId) {
@@ -451,6 +466,11 @@
         event.preventDefault();
         submitForm(event.target);
     });
+
+    // 照片載不到時直接拿掉，不留破圖示。error 事件不會冒泡，要用捕獲階段。
+    document.addEventListener('error', (event) => {
+        if (event.target.tagName === 'IMG') event.target.remove();
+    }, true);
 
     $('#fab').addEventListener('click', () => showForm());
 

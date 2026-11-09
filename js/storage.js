@@ -43,6 +43,12 @@ const Store = (() => {
         write(KEY, doc);
     }
 
+    // 手動編輯過的行程不會換成新版預設，依名稱補上照片。使用者選「不顯示」的 spot 是空字串，不會被補回。
+    const seedSpots = new Map(TRIP.days.flatMap((d) => d.items).filter((i) => i.spot).map((i) => [i.name, i.spot]));
+    doc.days.forEach((d) => d.items.forEach((item) => {
+        if (item.spot === undefined && seedSpots.has(item.name)) item.spot = seedSpots.get(item.name);
+    }));
+
     let checks = read(CHECKS_KEY) || {};
     const findDay = (id) => doc.days.find((d) => d.id === id);
 

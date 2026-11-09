@@ -22,13 +22,15 @@ python -m http.server 8080
 - 行程可新增、編輯、刪除（可復原）、移到別天，一鍵 Google Maps 導航。
 - 準備頁：17 項預訂依期限排序、打包清單。行程上的「待訂」會跟著勾選變成「已訂」。
 - 天氣依當天地點顯示，雪場多降雪量。預報只有 16 天，1/23 前不會去抓。
-- 離線可看完整行程。
+- 每個景點、餐廳、住宿列都有照片，點開看大圖和介紹；編輯時可以換照片或選不顯示。
+- 離線可看完整行程和照片。
 
 ## 改內容
 
 | 要改什麼 | 改哪裡 |
 | --- | --- |
 | 預設行程、預訂、打包 | `js/trip-data.js`，改完把 `seedVersion` +1 |
+| 景點介紹、照片署名 | `js/spots.js`；新照片放 `photos/`，並加進 `sw.js` 的 `PHOTOS` |
 | 任何檔案要讓手機更新 | `sw.js` 的 `VERSION` +1 |
 
 有手動編輯過的手機不會被新版預設行程覆蓋，要換請到「資訊」頁按重設。
@@ -36,6 +38,10 @@ python -m http.server 8080
 ## 設計
 
 和紙底、墨字、朱印的旅のしおり風，只有淺色。字型與福岡版相同（Noto Sans JP、Noto Serif JP）。版面規則取自 [awesome-design-md](https://github.com/VoltAgent/awesome-design-md) 的 Notion：扁平無陰影、細線分隔、方正按鈕、底線分頁；配色與造型為本專案自訂。
+
+## 照片授權
+
+`photos/` 的照片取自 Wikimedia Commons，已縮小並轉成 WebP，授權為 CC0、公有領域、CC BY 或 CC BY-SA。各張的作者、授權與原始連結記在 `js/spots.js`，也顯示在 App 的詳情頁。
 
 ## 福岡版修掉的問題
 
