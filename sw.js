@@ -1,6 +1,6 @@
 // 改任何檔案後，把 VERSION +1，手機下次開啟就會換新。沒改版號，手機會一直用舊版。
 // 同一版的 HTML、CSS、JS 一律從同一份快取提供，避免新 HTML 配舊 JS 造成空白。
-const VERSION = 'v3';
+const VERSION = 'v4';
 const CACHE = `tokyo-trip-${VERSION}`;
 const FONT_CACHE = 'tokyo-trip-fonts';
 const SHELL = [
