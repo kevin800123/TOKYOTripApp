@@ -1,5 +1,5 @@
 // 景點照片與介紹。照片都來自 Wikimedia Commons，授權允許再利用，署名顯示在詳情頁。
-// sample: true 表示照片是同類型的示意，不是行程上那一家店或那一艘船。
+// sample: true 表示照片是同類型的示意，不是行程上實際去的那一家店。
 const SPOTS = {
     narita_t2: {
         name: '成田機場第 2 航廈', photo: 'photos/narita_t2.webp',
@@ -20,26 +20,6 @@ const SPOTS = {
         name: '拉麵', photo: 'photos/ramen.webp', sample: true,
         intro: '上野車站周邊拉麵店很密集，不少開到深夜。多數店家在門口的食券機點餐，先買票再入座。',
         credit: { author: 'Ominae', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hakata_ramen_bowl_closeup.jpg' },
-    },
-    waraji: {
-        name: '草鞋豬排丼', photo: 'photos/waraji.webp', sample: true,
-        intro: '秩父的代表料理。薄切豬排炸過後沾上甜鹹的醬汁，鋪滿整碗白飯，大小和形狀像一雙草鞋（わらじ），因此得名。',
-        credit: { author: 'Ocdp', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Warajikatsu.jpg' },
-    },
-    chichibu_shrine: {
-        name: '秩父神社', photo: 'photos/chichibu_shrine.webp',
-        intro: '秩父地方的總鎮守，現在的社殿是 1592 年由德川家康捐建。社殿四周布滿色彩鮮豔的雕刻，其中活潑的「三猿」和轉過頭的貓頭鷹最受歡迎。每年 12 月的秩父夜祭，是日本三大曳山祭之一。',
-        credit: { author: 'NY066', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Chichibu-Shrine.JPG' },
-    },
-    matsurinoyu: {
-        name: '西武秩父站前溫泉祭の湯', photo: 'photos/matsurinoyu.webp',
-        intro: '和西武秩父站相連的溫泉設施，以秩父夜祭為裝潢主題。一邊是要買票的溫泉，一邊是不用門票的美食街和伴手禮區。',
-        credit: { author: 'Asturio Cantabrio', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Seibu-Chichibu_Ekimae_Onsen_ac_(1).jpg' },
-    },
-    ashigakubo: {
-        name: 'あしがくぼの氷柱', photo: 'photos/ashigakubo.webp',
-        intro: '每年冬天，當地人在山坡上噴水，讓水一層一層結凍成整片人造冰柱。入夜後打上彩色燈光，西武線的電車就從冰柱旁邊開過。',
-        credit: { author: 'Lovetodai', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:%E3%81%82%E3%81%97%E3%81%8C%E3%81%8F%E3%81%BC%E3%81%AE%E6%B0%B7%E6%9F%B1profile.jpg' },
     },
     gala: {
         name: 'GALA 湯澤雪場中心', photo: 'photos/gala.webp',
@@ -76,21 +56,6 @@ const SPOTS = {
         intro: '蔦屋書店由三棟相連的建築組成，書、音樂、電影和咖啡都在同一個空間。周邊是安靜的住宅區和小店，適合散步。',
         credit: { author: 'Jonathan Lin', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Daikanyama_T-SITE_2016-04-04.jpg' },
     },
-    yakatabune: {
-        name: '屋形船', photo: 'photos/yakatabune.webp', sample: true,
-        intro: '江戶時代就有的傳統遊船，船艙裡有和式座位，一邊吃料理一邊看沿岸夜景。實際航線依船家安排，東京灣常見的路線會經過彩虹大橋和台場。',
-        credit: { author: 'Nesnad', license: 'CC BY 3.0', url: 'https://commons.wikimedia.org/wiki/File:Yakatabune-nearodaiba-jan27-2015.jpg' },
-    },
-    hakushu: {
-        name: '白州蒸溜所', photo: 'photos/hakushu.webp',
-        intro: '三得利 1973 年在山梨縣甲斐駒ヶ岳山麓建立的蒸溜所，四周是大片森林，被稱為「森林蒸溜所」。導覽會走過糖化、發酵、蒸餾的現場，最後試飲。',
-        credit: { author: 'tetsuya yamamoto', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Hakushu_Distillery_-_32128449586.jpg' },
-    },
-    hakushu_museum: {
-        name: '白州蒸溜所園區', photo: 'photos/hakushu_museum.webp',
-        intro: '園區裡的威士忌博物館，外型取自傳統燻麥塔的尖屋頂。園區也有餐廳和商店，部分商品只在這裡賣，實際開放內容以官網為準。',
-        credit: { author: 'Keeezawa', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hakushu_distillery_museum.jpg' },
-    },
     kagurazaka: {
         name: '神樂坂', photo: 'photos/kagurazaka.webp',
         intro: '過去是東京的花街，大路旁的窄巷裡還留著石板路和料亭。かくれんぼ橫丁的意思是「捉迷藏巷」，巷子窄到人一轉彎就不見了。',
@@ -101,11 +66,6 @@ const SPOTS = {
         intro: 'Mizunara 是日本橡木「水楢」的名字，用它做的酒桶會帶來像沉香的氣味，是日本威士忌的招牌特色。酒單很長時，可以請店員依喜好推薦。',
         credit: { author: 'cegoh', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Bar_Yamazaki.jpg' },
     },
-    sumo: {
-        name: '相撲部屋晨練', photo: 'photos/sumo.webp', sample: true,
-        intro: '力士每天清晨在部屋的土俵上練習，稱為「朝稽古」。兩國有國技館，周邊也有許多相撲部屋，被稱為相撲之町。能不能拍照依部屋和導覽的規定。',
-        credit: { author: 'amanderson2', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Practice_at_Arashio_Stable_2014-08-05.jpg' },
-    },
     ameyoko: {
         name: '阿美橫町', photo: 'photos/ameyoko.webp',
         intro: '從上野到御徒町、沿著高架鐵道約 500 公尺的市集，起源於戰後的黑市。乾貨、藥妝、零食、服飾都有，假日人最多。',
@@ -115,5 +75,50 @@ const SPOTS = {
         name: '日式燒肉', photo: 'photos/yakiniku.webp', sample: true,
         intro: '單點牛肉的各個部位，自己在桌上烤。上野站東側的東上野有一小區韓國街，燒肉店特別集中，走路就能到。',
         credit: { author: 'Syced', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Steak_at_yakiniku_restaurant_just_outside_Moon_Beach.jpg' },
+    },
+    yanaka: {
+        name: '谷中銀座', photo: 'photos/yanaka.webp',
+        intro: '二戰時沒有被大規模燒毀的下町，寺廟、木造老屋和小巷都還在。夕やけだんだん是一段看夕陽有名的階梯，走下去就是約 60 家小店的谷中銀座商店街。',
+        credit: { author: 'Stephen Kelly from San Francisco, CA, USA', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Yanaka_Ginza,_Yanaka_(53417016334).jpg' },
+    },
+    nezu: {
+        name: '根津神社', photo: 'photos/nezu.webp',
+        intro: '傳說由日本武尊創建，現在的社殿建於 1706 年，包含社殿在內有多處國家重要文化財。境內一排紅色小鳥居很好拍，門票免費。',
+        credit: { author: 'Wiiii', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:Nezu_Shrine_2010.jpg' },
+    },
+    yushima: {
+        name: '湯島天神', photo: 'photos/yushima.webp',
+        intro: '祭祀學問之神菅原道真，考季時擠滿考生和繪馬。境內約有 300 棵梅樹，以白梅為主，每年 2 月到 3 月初舉辦梅祭，晚上有點燈。',
+        credit: { author: 'Manish Prabhune', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Yushima_Tenjin_Shrine,_Tokyo.jpg' },
+    },
+    sento: {
+        name: '東京的錢湯', photo: 'photos/sento.webp', sample: true,
+        intro: '東京的公共澡堂，費用便宜，是當地人的日常。行程上的萩の湯離鶯谷站很近，是都內數一數二大的錢湯，有露天浴池和餐廳。進浴池前要先洗淨身體，不能把毛巾放進水裡。',
+        credit: { author: 'Kurihaya', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Tatsuno-yu_Sento_Tokyo_2.jpg' },
+    },
+    musashino: {
+        name: '三得利武藏野啤酒廠', photo: 'photos/musashino.webp',
+        intro: '三得利位於東京府中的啤酒廠，The Premium Malts 就在這裡釀造。導覽會介紹原料和釀造過程，最後試飲剛做好的啤酒。',
+        credit: { author: 'Fuchu', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Suntory.musashino.beer.brewery.fuchu.tokyo_01.jpg' },
+    },
+    koishikawa: {
+        name: '小石川後樂園', photo: 'photos/koishikawa.webp',
+        intro: '水戶德川家在江戶時代初期建造的大名庭園，在東京巨蛋旁邊就能看到一大片池水和林木。園內約有 150 棵梅樹，2 月是賞梅的季節。',
+        credit: { author: '江戸村のとくぞう (Edomura no Tokuzo)', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:%E5%B0%8F%E7%9F%B3%E5%B7%9D%E5%BE%8C%E6%A5%BD%E5%9C%92%E3%83%BC%EF%BC%91.JPG' },
+    },
+    ebisu: {
+        name: '惠比壽花園廣場', photo: 'photos/ebisu.webp',
+        intro: '由札幌啤酒工廠舊址改建的複合設施。塔樓 38 樓的 SKY LOUNGE 免費開放，白天晚上都能看東京市區的景色，傍晚最漂亮。照片是從這棟樓往澀谷、新宿方向拍的。',
+        credit: { author: 'Ximonic (Simo Räsänen)', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Shibuya_and_Shinjuku_from_Yebisu_Garden_Place_Tower,_Ebisu,_Tokyo,_Japan,_2024_May.jpg' },
+    },
+    ueno_park: {
+        name: '上野公園不忍池', photo: 'photos/ueno_park.webp',
+        intro: '上野恩賜公園是日本最早的公園之一，博物館和美術館都在這裡。不忍池中央的小島上有弁天堂，環池散步一圈不用太久，冬天能看到水鳥。',
+        credit: { author: 'Guilhem Vellut from Annecy, France', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Shinobazu_Pond_@_Ueno_Park_(14041716455).jpg' },
+    },
+    izakaya: {
+        name: '居酒屋', photo: 'photos/izakaya.webp', sample: true,
+        intro: '日本的小酒館，點幾道小菜配酒，當晚餐吃也很划算。多數店入座後會先上一道收費的小菜（お通し），每人約幾百日圓，先有心理準備。',
+        credit: { author: 'Nesnad', license: 'CC BY 4.0', url: 'https://commons.wikimedia.org/wiki/File:Inside_various_izakaya_in_Tokyo_-_2024_April_28_various.jpeg' },
     },
 };
