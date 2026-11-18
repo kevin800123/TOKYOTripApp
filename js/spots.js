@@ -36,6 +36,11 @@ const SPOTS = {
         intro: '川端康成小說《雪國》的舞台，車站周邊溫泉旅館很多。這一帶是日本有名的豪雪地帶，冬天路旁常堆著高高的雪牆。',
         credit: { author: 'Abasaa', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Entrance_to_Echigo-Yuzawa_Onsen.JPG' },
     },
+    yuzawa_grand: {
+        name: '湯沢グランドホテル', photo: 'photos/yuzawa_grand.webp',
+        intro: '越後湯澤站西口旁的溫泉飯店，屋頂招牌上的「季里の湯」是館內溫泉的名字。有大浴場和庭園露天風呂，晚餐是和洋中自助餐。照片是 2023 年 3 月拍的，雪季後期的樣子。',
+        credit: { author: 'Syced', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Yuzawa_Grand_Hotel_2.jpg' },
+    },
     ponshukan: {
         name: 'ぽんしゅ館', photo: 'photos/ponshukan.webp',
         intro: '越後湯澤站內的日本酒主題館。整面牆都是投幣試飲機，換代幣就能試喝新潟各酒廠的酒。同一區也買得到魚沼米飯糰和在地小吃。',
