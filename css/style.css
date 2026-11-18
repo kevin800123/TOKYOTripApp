@@ -129,6 +129,24 @@ ol, ul { list-style: none; }
 .weather-main span { color: var(--text-light); font-size: 13px; }
 .weather-main .weather-stale { color: var(--shu); }
 .weather-empty { color: var(--text-light); font-size: 13px; min-height: 44px; }
+.weather-main .weather-now { color: var(--text-color); }
+
+/* 即時影像 */
+.cams { padding: 0 16px; border-bottom: 1px solid var(--border-color); }
+.cams summary { display: flex; align-items: baseline; gap: 10px; white-space: nowrap; min-height: 44px; padding: 11px 0; cursor: pointer; font-family: 'Noto Serif JP', serif; font-size: 15px; font-weight: 600; list-style: none; }
+.cams summary::-webkit-details-marker { display: none; }
+.cams summary::after { content: '開啟'; margin-left: auto; flex: none; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 400; color: var(--ai); text-decoration: underline; text-underline-offset: 3px; }
+.cams[open] summary::after { content: '收起'; }
+.cams summary span { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: 'Noto Sans JP', sans-serif; font-size: 12px; font-weight: 400; color: var(--text-light); }
+.cam-tabs { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 8px; }
+.cam-tab { flex: none; min-height: 36px; padding: 0 10px; border: 1px solid var(--border-strong); border-radius: var(--radius); font-size: 13px; color: var(--text-light); background: var(--bg-color); }
+.cam-tab[aria-pressed="true"] { border-color: var(--text-color); color: var(--text-color); font-weight: 600; }
+.cam-frame { display: block; }
+.cam-frame img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; background: var(--border-color); }
+.cam-caption { padding: 6px 0 12px; font-size: 12px; line-height: 1.6; color: var(--text-light); }
+.cam-caption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+.cam-missing { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 9; margin-bottom: 12px; padding: 16px; background: var(--border-color); font-size: 13px; color: var(--text-light); text-align: center; }
+.cam-link { width: 100%; }
 .link-btn { flex: none; min-height: 40px; padding: 0 4px; color: var(--ai); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
 
 /* 時間軸 */

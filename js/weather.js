@@ -1,6 +1,8 @@
 // Open-Meteo 預報，每天依當天去的地方顯示，雪場多一項降雪量。
 const Weather = (() => {
     const CACHE_KEY = 'tokyo-trip-weather-v1';
+    const NOW_KEY = 'tokyo-trip-weather-now-v1';
+    const NOW_STALE_MS = 30 * 60 * 1000;
     const FORECAST_DAYS = 16;
     const STALE_MS = 3 * 60 * 60 * 1000;
     const COOLDOWN_MS = 5 * 60 * 1000;
@@ -24,6 +26,53 @@ const Weather = (() => {
     }
     let lastAttempt = 0;
     let lastFailed = false;
+    let now = null;
+    try {
+        now = JSON.parse(localStorage.getItem(NOW_KEY));
+    } catch (e) {
+        now = null;
+    }
+    let nowAttempt = 0;
+
+    // 現在的天氣，出發前也看得到。30 分鐘內抓過就不再抓。
+    async function refreshNow() {
+        const t = Date.now();
+        if (!navigator.onLine || t - nowAttempt < 5 * 60 * 1000) return false;
+        if (now && t - now.fetchedAt < NOW_STALE_MS) return false;
+        nowAttempt = t;
+        const keys = Object.keys(TRIP.places);
+        const params = new URLSearchParams({
+            latitude: keys.map((k) => TRIP.places[k].lat).join(','),
+            longitude: keys.map((k) => TRIP.places[k].lon).join(','),
+            current: 'temperature_2m,weather_code,snow_depth',
+            timezone: 'Asia/Tokyo',
+        });
+        try {
+            const res = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
+            if (!res.ok) throw new Error(`HTTP ${res.status}`);
+            const json = await res.json();
+            const list = Array.isArray(json) ? json : [json];
+            const places = {};
+            keys.forEach((key, i) => {
+                const c = list[i].current;
+                places[key] = { temp: c.temperature_2m, code: c.weather_code, depth: c.snow_depth };
+            });
+            now = { fetchedAt: t, places };
+            try {
+                localStorage.setItem(NOW_KEY, JSON.stringify(now));
+            } catch (e) { /* 寫不進去就只留在記憶體 */ }
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    // 超過 3 小時的「現在」就不顯示，免得誤導。
+    function current(place) {
+        const c = now?.places?.[place];
+        if (!c || Date.now() - now.fetchedAt > 3 * 3600 * 1000 || typeof c.temp !== 'number') return null;
+        return { ...c, text: CODES[c.code] || '陰天', fetchedAt: now.fetchedAt };
+    }
 
     const addDays = (iso, n) => {
         const date = new Date(`${iso}T00:00:00Z`);
@@ -90,5 +139,5 @@ const Weather = (() => {
         return { ...data, text, fetchedAt: cache.fetchedAt };
     }
 
-    return { refresh, forDay, firstForecastDate, failed: () => lastFailed };
+    return { refresh, refreshNow, current, forDay, firstForecastDate, failed: () => lastFailed };
 })();

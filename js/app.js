@@ -4,7 +4,7 @@
     const openLabel = (name) => (/^[A-Za-z]/.test(name) ? `打開 ${name}` : `打開${name}`);
     const CATEGORIES = Object.keys(MARKS);
 
-    const state = { view: 'plan', dayId: 1, nextId: null };
+    const state = { view: 'plan', dayId: 1, nextId: null, cam: 0, camsOpen: false };
     const $ = (sel) => document.querySelector(sel);
     const main = $('#main');
     const sheet = $('#sheet');
@@ -108,11 +108,48 @@
         const message = today < opens
             ? `${esc(place)}的預報 ${shortDate(opens)} 起才看得到`
             : (Weather.failed() ? '抓不到天氣，確認網路後再試' : `目前沒有${esc(place)}這天的預報`);
+        const c = TRIP.places[day.place].climate;
+        const now = Weather.current(day.place);
+        const climate = c ? `往年這幾天：高 ${Math.round(c.max)}° 低 ${Math.round(c.min)}°，${c.snowy >= 50
+            ? `約 ${Math.round(c.snowy / 10)} 成的日子會下雪${c.depth ? `，積雪約 ${(c.depth / 100).toFixed(1)} 公尺` : ''}`
+            : `下雨或下雪的日子約 ${Math.max(1, Math.round(c.wet / 10))} 成`}` : '';
         return `
             <div class="weather weather-empty">
-                <span>${message}</span>
+                <div class="weather-main">
+                    <span>${message}</span>
+                    ${climate ? `<span class="weather-climate">${climate}</span>` : ''}
+                    ${now ? `<span class="weather-now">${esc(place)}現在 ${Math.round(now.temp)}°C ${esc(now.text)}${now.depth > 0.01 ? `，積雪 ${Math.round(now.depth * 100)} 公分` : ''}</span>` : ''}
+                </div>
                 ${today >= opens && today <= TRIP.end ? '<button class="link-btn" data-action="weather">重新抓取</button>' : ''}
             </div>`;
+    }
+
+    // 即時影像：有圖片網址的直接顯示，其他是連到來源網站。
+    function camsHtml(day) {
+        const cams = TRIP.places[day.place].cams || [];
+        if (!cams.length) return '';
+        const images = cams.filter((c) => c.image);
+        const links = cams.filter((c) => !c.image);
+        const index = Math.min(state.cam, Math.max(images.length - 1, 0));
+        const cam = images[index];
+        // 10 分鐘換一次網址，避免瀏覽器一直拿舊畫面。
+        const bucket = Math.floor(Date.now() / 600000);
+        const picture = !cam ? '' : (navigator.onLine
+            ? `<a class="cam-frame" href="${esc(cam.image)}" target="_blank" rel="noopener">
+                   <img class="cam-img" src="${esc(`${cam.image}?t=${bucket}`)}" alt="${esc(cam.label)}即時影像" width="640" height="360" loading="lazy">
+               </a>
+               <p class="cam-caption">${esc(cam.label)}，畫面左上角是拍攝時間。來源：<a href="${esc(cam.url)}" target="_blank" rel="noopener">${esc(cam.source)}</a></p>`
+            : '<p class="cam-missing">離線時看不到即時影像</p>');
+        return `
+            <details class="cams" ${state.camsOpen ? 'open' : ''}>
+                <summary>即時影像<span>${esc(cams.map((c) => c.label).join('、'))}</span></summary>
+                ${images.length > 1 ? `<div class="cam-tabs" role="group" aria-label="切換攝影機">${images.map((c, i) => `
+                    <button class="cam-tab" data-action="cam" data-cam="${i}" aria-pressed="${i === index}">${esc(c.label)}</button>`).join('')}
+                </div>` : ''}
+                ${picture}
+                ${links.map((c) => `<a class="btn cam-link" href="${esc(c.url)}" target="_blank" rel="noopener">看${esc(c.label)}即時影像</a>
+                    <p class="cam-caption">來源：${esc(c.source)}</p>`).join('')}
+            </details>`;
     }
 
     function placeOf(item) {
@@ -208,6 +245,7 @@
                     </section>
                     <div class="wave" aria-hidden="true"></div>
                     ${weatherHtml(day)}
+                    ${camsHtml(day)}
                 </div>
                 <div class="plan-list">
                     ${day.items.length ? `<ol class="timeline">${day.items.map((item) => itemHtml(item, day.id)).join('')}</ol>`
@@ -517,6 +555,11 @@
         edit: (el) => showForm(Store.findItem(state.dayId, el.dataset.item)),
         delete: (el) => deleteItem(el.dataset.item),
         close: closeSheet,
+        cam(el) {
+            state.cam = Number(el.dataset.cam);
+            state.camsOpen = true;
+            render();
+        },
         async weather(el) {
             el.textContent = '更新中';
             el.disabled = true;
@@ -573,7 +616,16 @@
 
     // 照片載不到時直接拿掉，不留破圖示。error 事件不會冒泡，要用捕獲階段。
     document.addEventListener('error', (event) => {
+        if (event.target.classList?.contains('cam-img')) {
+            event.target.closest('.cam-frame').outerHTML = '<p class="cam-missing">目前抓不到這台攝影機的畫面，雪季外可能沒有更新</p>';
+            return;
+        }
         if (event.target.tagName === 'IMG') event.target.remove();
+    }, true);
+
+    // 記住即時影像有沒有展開，重畫時維持原狀。toggle 不會冒泡，用捕獲階段。
+    document.addEventListener('toggle', (event) => {
+        if (event.target.classList?.contains('cams')) state.camsOpen = event.target.open;
     }, true);
 
     $('#fab').addEventListener('click', () => showForm());
@@ -598,5 +650,8 @@
 
     Weather.refresh(jstNow().iso).then((changed) => {
         if (changed && !sheet.open) render();
+    });
+    Weather.refreshNow().then((changed) => {
+        if (changed && !sheet.open && state.view === 'plan') render();
     });
 })();

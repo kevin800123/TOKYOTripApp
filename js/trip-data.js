@@ -5,10 +5,23 @@ const TRIP = {
     start: '2027-02-07',
     end: '2027-02-13',
 
+    // climate：Open-Meteo 歷史資料 2016 到 2025 年 2/7 到 2/13 的平均（氣象模型重建值）。
+    // wet 是有下雨或下雪（1 mm 以上）的天數比例，snowy 是有降雪的天數比例，depth 是平均積雪（公分）。
     places: {
-        tokyo: { label: '東京上野', lat: 35.71, lon: 139.77 },
-        narita: { label: '成田機場', lat: 35.77, lon: 140.39 },
-        yuzawa: { label: '越後湯澤', lat: 36.93, lon: 138.81 },
+        tokyo: { label: '東京上野', lat: 35.71, lon: 139.77,
+                 climate: { max: 9.7, min: -0.1, wet: 20, snowy: 11 },
+                 cams: [{ label: '上野（不忍池旁）', url: 'https://weathernews.jp/onebox/livecam/kanto/tokyo/410000685/', source: 'ウェザーニュース' }] },
+        narita: { label: '成田機場', lat: 35.77, lon: 140.39,
+                  climate: { max: 9.6, min: 0.5, wet: 24, snowy: 7 },
+                  cams: [{ label: '上野（不忍池旁）', url: 'https://weathernews.jp/onebox/livecam/kanto/tokyo/410000685/', source: 'ウェザーニュース' }] },
+        yuzawa: { label: '越後湯澤', lat: 36.93, lon: 138.81,
+                  climate: { max: 2.6, min: -4.5, wet: 83, snowy: 77, depth: 134 },
+                  cams: [
+                      { label: '中央區 Melody 雪道', image: 'https://gala.co.jp/camera/cam2.jpg', url: 'https://gala.co.jp/winter/', source: 'GALA 湯澤官方' },
+                      { label: '中央區 Jiji 雪道', image: 'https://gala.co.jp/camera/cam3.jpg', url: 'https://gala.co.jp/winter/', source: 'GALA 湯澤官方' },
+                      { label: '北區 Broadway 雪道', image: 'https://gala.co.jp/camera/cam1.jpg', url: 'https://gala.co.jp/winter/', source: 'GALA 湯澤官方' },
+                      { label: '越後湯澤站西口', url: 'https://www.nct9.co.jp/comch/livecamera', source: 'NCT，頁面裡點「湯沢町」的越後湯沢駅西口', },
+                  ] },
     },
 
     days: [
