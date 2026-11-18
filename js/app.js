@@ -36,9 +36,24 @@
         return day.items.find((item) => item.time >= now.hm)?.id ?? null;
     }
 
+    // 倒數到第一天的固定時間（降落成田），沒有就用當天 00:00，都是日本時間。
+    function arrivalTime() {
+        const first = Store.days()[0];
+        const fixed = first?.items.find((item) => item.fixed);
+        return Date.parse(`${TRIP.start}T${fixed?.time ?? '00:00'}:00+09:00`);
+    }
+
+    const pad2 = (n) => String(n).padStart(2, '0');
+
     function tripStatus() {
+        const left = arrivalTime() - Date.now();
+        if (left > 0) {
+            const s = Math.floor(left / 1000);
+            const d = Math.floor(s / 86400);
+            const clock = `${pad2(Math.floor(s / 3600) % 24)}:${pad2(Math.floor(s / 60) % 60)}:${pad2(s % 60)}`;
+            return `抵達成田倒數 ${d ? `${d} 天 ` : ''}${clock}`;
+        }
         const today = jstNow().iso;
-        if (today < TRIP.start) return `還有 ${daysBetween(today, TRIP.start)} 天出發`;
         if (today > TRIP.end) return '旅程已結束';
         return `第 ${daysBetween(TRIP.start, today) + 1} 天`;
     }
@@ -635,6 +650,13 @@
         if (await Weather.refresh(jstNow().iso)) render();
     });
     window.addEventListener('offline', () => toast('目前離線，行程仍可查看'));
+
+    // 右上角倒數每秒更新，只改這一行字。
+    setInterval(() => {
+        const el = $('#trip-status');
+        const text = tripStatus();
+        if (el.textContent !== text) el.textContent = text;
+    }, 1000);
 
     // 每分鐘檢查「下一站」，有變才重畫。
     setInterval(() => {

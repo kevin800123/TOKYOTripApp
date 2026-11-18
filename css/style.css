@@ -60,7 +60,7 @@ ol, ul { list-style: none; }
 }
 .top-bar { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 16px 0; }
 .top-title { font-family: 'Noto Serif JP', serif; font-weight: 600; font-size: 15px; }
-.top-status { color: var(--text-light); font-size: 13px; }
+.top-status { color: var(--text-light); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 .days ol { display: flex; padding: 2px 6px 0; }
 .days li { flex: 1 1 0; min-width: 0; }
