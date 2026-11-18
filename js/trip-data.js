@@ -1,6 +1,6 @@
 // 預設行程資料。改內容後把 seedVersion +1，沒手動編輯過的手機會自動換成新版。
 const TRIP = {
-    seedVersion: 6,
+    seedVersion: 7,
     checkedOn: '2026/11/18',
     start: '2027-02-07',
     end: '2027-02-13',
@@ -15,7 +15,7 @@ const TRIP = {
         {
             id: 1, iso: '2027-02-07', date: '2/7', dow: '日',
             station: '成田', kana: 'なりた', roman: 'Narita', theme: '晚上抵達，直接到上野休息',
-            place: 'narita', stay: '上野',
+            place: 'narita', stay: 'NOHGA HOTEL 上野',
             items: [
                 { time: '19:35', category: '交通', spot: 'narita_t2', name: '抵達成田機場第 2 航廈', location: '成田国際空港 第2ターミナル', tags: ['虎航', '確定時間'], fixed: true,
                   notes: '入境、領行李約 1 小時。\nVisit Japan Web 的 QR Code 先截圖，機場訊號不一定好。' },
@@ -29,7 +29,7 @@ const TRIP = {
         {
             id: 2, iso: '2027-02-08', date: '2/8', dow: '一',
             station: '下北澤', kana: 'しもきたざわ', roman: 'Shimokitazawa', theme: '古著巷弄，傍晚惠比壽看夜景',
-            place: 'tokyo', stay: '上野',
+            place: 'tokyo', stay: 'NOHGA HOTEL 上野',
             items: [
                 { time: '10:30', category: '交通', name: '上野到下北澤', location: '下北沢駅', transit: '約 45 分' },
                 { time: '11:30', category: '飲食', spot: 'soup_curry', name: '午餐：下北澤湯咖哩', location: '下北沢 スープカレー' },
@@ -39,16 +39,16 @@ const TRIP = {
                 { time: '17:15', category: '景點', spot: 'ebisu', name: '惠比壽花園廣場 38 樓夜景', location: '恵比寿ガーデンプレイスタワー', tags: ['免費'],
                   notes: '從代官山走路約 15 分鐘。38 樓的 SKY LOUNGE 免費，查到的開放時間是 11:00 到 23:30。\n2 月的日落大約 17:20，剛好看天色變暗。' },
                 { time: '18:30', category: '飲食', spot: 'izakaya', name: '晚餐：惠比壽平價居酒屋', location: '恵比寿横丁', notes: '惠比壽橫丁一帶小店很多，週一有些店會休，到現場看哪家有開。' },
-                { time: '20:30', category: '交通', name: '回上野，整理滑雪包', location: '上野駅', transit: '約 25 分',
+                { time: '20:30', category: '交通', name: '回 NOHGA HOTEL，整理滑雪包', location: 'NOHGA HOTEL UENO TOKYO', transit: '約 25 分', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網',
                   notes: '明早 07:00 出門，大行李留飯店，只帶兩天份的小包。' },
             ],
         },
         {
             id: 3, iso: '2027-02-09', date: '2/9', dow: '二',
             station: '湯澤', kana: 'ゆざわ', roman: 'Gala Yuzawa', theme: '滑雪第一天，整天新手課',
-            place: 'yuzawa', stay: '越後湯澤',
+            place: 'yuzawa', stay: '湯沢グランドホテル',
             items: [
-                { time: '07:00', category: '住宿', spot: 'ueno', name: '大行李寄放 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', notes: '今晚住越後湯澤，明晚再回同一間飯店。' },
+                { time: '07:00', category: '住宿', spot: 'ueno', name: '大行李寄放 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網', notes: '今晚住越後湯澤，明晚再回同一間飯店。' },
                 { time: '07:30', category: '交通', name: '新幹線：上野到 GALA 湯澤', location: 'ガーラ湯沢駅', transit: '約 70 分', task: 'shinkansen',
                   notes: 'GALA 站是雪季限定，不是每班都停，訂票時要確認。' },
                 { time: '09:00', category: '滑雪', spot: 'gala', name: '換雪票、租雪具、寄物', location: 'GALA湯沢スキー場', task: 'gala-ticket',
@@ -64,22 +64,22 @@ const TRIP = {
         {
             id: 4, iso: '2027-02-10', date: '2/10', dow: '三',
             station: '湯澤', kana: 'ゆざわ', roman: 'Gala Yuzawa', theme: '滑雪第二天，自己試試看',
-            place: 'yuzawa', stay: '上野',
+            place: 'yuzawa', stay: 'NOHGA HOTEL 上野',
             items: [
-                { time: '08:30', category: '住宿', spot: 'yuzawa', name: '退房，前往 GALA', location: 'ガーラ湯沢駅', transit: '約 10 分', notes: '小包帶到 GALA 寄物，下午直接從雪場回東京。' },
+                { time: '08:30', category: '住宿', spot: 'yuzawa', name: '湯沢グランドホテル退房，前往 GALA', location: 'ガーラ湯沢駅', transit: '約 10 分', url: 'https://www.jalan.net/yad322925/', urlLabel: '飯店頁面（じゃらん）', notes: '小包帶到 GALA 寄物，下午直接從雪場回東京。' },
                 { time: '09:30', category: '滑雪', spot: 'gala_slope', name: '自己練習，或再上半天課', location: 'GALA湯沢スキー場', notes: '第一天學得順就自己滑，還抓不到就再上半天課。' },
                 { time: '12:00', category: '飲食', spot: 'gala', name: '雪場午餐', location: 'GALA湯沢スキー場' },
                 { time: '13:00', category: '滑雪', spot: 'gala_slope', name: '最後兩小時', location: 'GALA湯沢スキー場', notes: '腿沒力時就停，新手受傷多半發生在最後一趟。' },
                 { time: '15:00', category: '滑雪', spot: 'gala', name: '還雪具、更衣', location: 'GALA湯沢スキー場' },
                 { time: '15:45', category: '交通', name: '新幹線：GALA 湯澤回上野', location: '上野駅', transit: '約 70 分', task: 'shinkansen' },
-                { time: '17:30', category: '住宿', spot: 'ueno', name: '回 NOHGA HOTEL，取大行李', location: 'NOHGA HOTEL UENO TOKYO' },
+                { time: '17:30', category: '住宿', spot: 'ueno', name: '回 NOHGA HOTEL，取大行李', location: 'NOHGA HOTEL UENO TOKYO', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網' },
                 { time: '18:30', category: '飲食', spot: 'yakiniku', name: '晚餐：上野燒肉或居酒屋', location: '上野 焼肉', notes: '明天 10:30 才出門，今晚可以放鬆吃。' },
             ],
         },
         {
             id: 5, iso: '2027-02-11', date: '2/11', dow: '四',
             station: '谷中', kana: 'やなか', roman: 'Yanaka', theme: '下町散步賞梅，傍晚泡錢湯',
-            place: 'tokyo', stay: '上野', holiday: '建國紀念日',
+            place: 'tokyo', stay: 'NOHGA HOTEL 上野', holiday: '建國紀念日',
             items: [
                 { time: '10:00', category: '交通', name: '上野到日暮里', location: '日暮里駅', transit: '約 5 分', notes: '今天是日本國定假日，人會比平日多。' },
                 { time: '10:15', category: '景點', spot: 'yanaka', name: '谷中靈園、夕陽階梯', location: '夕やけだんだん', tags: ['免費'], notes: '從日暮里站走路就到，適合慢慢逛老街和寺廟。' },
@@ -91,12 +91,13 @@ const TRIP = {
                 { time: '16:30', category: '體驗', mark: '湯', spot: 'sento', name: '錢湯萩の湯', location: 'ひだまりの泉 萩の湯',
                   notes: '東京的公共澡堂，費用約 ¥550，毛巾要自備或現場租。11:00 到 25:00，每月第 3 個週二公休。' },
                 { time: '18:30', category: '飲食', spot: 'izakaya', name: '晚餐：上野平價居酒屋', location: '上野 居酒屋', notes: '鶯谷到上野一站，吃完走回飯店。' },
+                { time: '20:30', category: '住宿', spot: 'ueno', name: '回 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網' },
             ],
         },
         {
             id: 6, iso: '2027-02-12', date: '2/12', dow: '五',
             station: '武藏野', kana: 'むさしの', roman: 'Musashino', theme: '啤酒廠導覽，夜晚神樂坂',
-            place: 'tokyo', stay: '上野',
+            place: 'tokyo', stay: 'NOHGA HOTEL 上野',
             items: [
                 { time: '09:00', category: '交通', name: '上野到分倍河原', location: '分倍河原駅', transit: '約 1 小時', notes: '山手線到新宿，轉京王線。分倍河原站有免費接駁車到工廠，班次看官網。' },
                 { time: '10:30', category: '體驗', mark: '酒', spot: 'musashino', name: '三得利武藏野啤酒廠導覽', location: 'サントリー天然水のビール工場 東京・武蔵野', task: 'musashino', tags: ['需預約'],
@@ -107,7 +108,7 @@ const TRIP = {
                 { time: '16:30', category: '景點', spot: 'kagurazaka', name: '神樂坂散步', location: '神楽坂', tags: ['免費'], notes: '從庭園走路約 15 分鐘，先逛巷子再吃飯。' },
                 { time: '18:00', category: '飲食', spot: 'kagurazaka', name: '神樂坂巷弄晚餐', location: '神楽坂 かくれんぼ横丁', notes: '石板小巷裡有不少小店，熱門店先訂位。' },
                 { time: '20:00', category: '體驗', mark: '酒', spot: 'whisky', name: '威士忌吧 Mizunara', location: 'Mizunara 神楽坂 bar', task: 'mizunara', tags: ['特別體驗'], notes: '專賣日本威士忌，查到的資料寫週日和假日公休。' },
-                { time: '22:00', category: '交通', name: '回上野', location: '上野駅', transit: '約 25 分' },
+                { time: '22:00', category: '交通', name: '回 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', transit: '約 25 分', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網' },
             ],
         },
         {
@@ -117,7 +118,7 @@ const TRIP = {
             items: [
                 { time: '09:00', category: '景點', spot: 'ueno_park', name: '上野公園、不忍池散步', location: '不忍池', tags: ['免費'], notes: '離飯店近，最後一天不用趕，可以睡飽再出門。' },
                 { time: '10:30', category: '購物', spot: 'ameyoko', name: '阿美橫町補貨', location: 'アメヤ横丁', notes: '肉乾、含肉零食不要買，帶不回台灣。' },
-                { time: '12:00', category: '住宿', spot: 'ueno', name: '回飯店拿行李', location: 'NOHGA HOTEL UENO TOKYO' },
+                { time: '12:00', category: '住宿', spot: 'ueno', name: 'NOHGA HOTEL 退房，拿行李', location: 'NOHGA HOTEL UENO TOKYO', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網', notes: '早上出門前先退房寄放行李，比較不用趕。' },
                 { time: '12:30', category: '交通', name: 'Skyliner 到成田第 1 航廈', location: '成田国際空港 第1ターミナル', transit: '約 45 分', task: 'skyliner', notes: '坐到終點站「成田機場」。樂桃在第 1 航廈北翼。' },
                 { time: '14:00', category: '交通', spot: 'narita_t1', name: '樂桃報到、託運', location: '成田国際空港 第1ターミナル 北ウイング', tags: ['樂桃'],
                   notes: '櫃台截止時間以樂桃訂位資訊為準。\n手提含免稅品合計約 7 公斤、行動電源隨身帶。' },

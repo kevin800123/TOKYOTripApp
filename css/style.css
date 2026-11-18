@@ -167,6 +167,18 @@ ol, ul { list-style: none; }
 }
 .row-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
 .row-title { font-family: 'Noto Serif JP', serif; font-size: 16px; font-weight: 600; line-height: 24px; }
+.row-route {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin: -10px 0 4px 96px;
+    padding: 4px 12px 6px 0;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--text-light);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
 .row-transit-time { margin-left: 8px; font-family: 'Noto Sans JP', sans-serif; font-size: 12px; font-weight: 400; color: var(--text-light); white-space: nowrap; }
 .row-notes { font-size: 13px; color: var(--text-light); line-height: 1.6; }
 .row-badges { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 2px; }
@@ -321,6 +333,10 @@ ol, ul { list-style: none; }
 .sheet-photo figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; padding: 6px 16px 0; font-size: 11px; line-height: 1.5; color: var(--text-light); }
 .sheet-photo figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
 .sheet-intro { font-size: 15px; line-height: 1.8; }
+.sheet-map { aspect-ratio: 4 / 3; border: 1px solid var(--border-color); background: var(--border-color); }
+.sheet-map iframe { display: block; width: 100%; height: 100%; border: 0; }
+.sheet-map p { display: flex; height: 100%; align-items: center; justify-content: center; padding: 16px; font-size: 13px; color: var(--text-light); text-align: center; }
+.sheet-route { font-size: 12px; line-height: 1.6; color: var(--text-light); overflow-wrap: anywhere; }
 .sheet-notes { white-space: pre-wrap; font-size: 14px; line-height: 1.75; }
 .sheet-intro + .sheet-notes { padding-top: 12px; border-top: 1px dotted var(--border-strong); color: var(--text-light); }
 .sheet-task { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-block: 1px dotted var(--border-strong); font-size: 14px; font-weight: 500; cursor: pointer; }

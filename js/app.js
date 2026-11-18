@@ -115,8 +115,44 @@
             </div>`;
     }
 
-    function itemHtml(item) {
+    function placeOf(item) {
+        return (item.location || item.name || '').trim();
+    }
+
+    // 上一站：同一天的前一項；每天第一項從前一晚的住宿出發，前一天沒有住宿列就用最後一項。
+    function originFor(dayId, itemId) {
+        const days = Store.days();
+        const d = days.findIndex((x) => x.id === dayId);
+        if (d === -1) return '';
+        const items = days[d].items;
+        const i = items.findIndex((x) => x.id === itemId);
+        if (i > 0) return placeOf(items[i - 1]);
+        for (let k = d - 1; k >= 0; k--) {
+            const prev = days[k].items;
+            const stay = prev.filter((x) => x.category === '住宿').pop();
+            if (stay) return placeOf(stay);
+            if (prev.length) return placeOf(prev[prev.length - 1]);
+        }
+        return '';
+    }
+
+    function mapLinks(origin, dest) {
+        const e = encodeURIComponent;
+        const route = Boolean(origin) && origin !== dest;
+        return {
+            route,
+            url: route
+                ? `https://www.google.com/maps/dir/?api=1&origin=${e(origin)}&destination=${e(dest)}&travelmode=transit`
+                : `https://www.google.com/maps/search/?api=1&query=${e(dest)}`,
+            embed: route
+                ? `https://maps.google.com/maps?saddr=${e(origin)}&daddr=${e(dest)}&dirflg=r&output=embed`
+                : `https://maps.google.com/maps?q=${e(dest)}&z=15&output=embed`,
+        };
+    }
+
+    function itemHtml(item, dayId) {
         const spot = SPOTS[item.spot];
+        const map = mapLinks(originFor(dayId, item.id), placeOf(item));
         const isTransit = item.category === '交通' && !item.fixed && !spot;
         const task = item.task ? TRIP.tasks.find((t) => t.id === item.task) : null;
         const taskBadge = task ? (Store.isChecked(task.id)
@@ -137,6 +173,7 @@
                     </span>
                     ${spot ? `<img class="row-thumb" src="${esc(spot.photo)}" alt="" width="72" height="72" loading="lazy" decoding="async">` : ''}
                 </button>
+                <a class="row-route" href="${esc(map.url)}" target="_blank" rel="noopener">${map.route ? '地圖路線' : '地圖'}</a>
             </li>`;
     }
 
@@ -173,7 +210,7 @@
                     ${weatherHtml(day)}
                 </div>
                 <div class="plan-list">
-                    ${day.items.length ? `<ol class="timeline">${day.items.map(itemHtml).join('')}</ol>`
+                    ${day.items.length ? `<ol class="timeline">${day.items.map((item) => itemHtml(item, day.id)).join('')}</ol>`
                         : '<div class="empty"><p>這天還沒有行程</p><button class="btn solid" data-action="add">新增第一個行程</button></div>'}
                     <p class="stay">今晚住：${esc(day.stay)}</p>
                 </div>
@@ -331,7 +368,10 @@
         const item = Store.findItem(state.dayId, itemId);
         if (!item) return;
         const task = item.task ? TRIP.tasks.find((t) => t.id === item.task) : null;
-        const destination = encodeURIComponent(item.location || item.name);
+        const destination = encodeURIComponent(placeOf(item));
+        const origin = originFor(state.dayId, item.id);
+        const map = mapLinks(origin, placeOf(item));
+        const ownLink = item.url && item.url !== task?.url;
         const spot = SPOTS[item.spot];
         sheetBody.innerHTML = `
             ${spot ? `
@@ -346,6 +386,14 @@
                 </div>
                 <button class="close" data-action="close" aria-label="關閉">×</button>
             </header>
+            <div class="sheet-map">
+                ${navigator.onLine
+                    ? `<iframe src="${esc(map.embed)}" title="${map.route ? '路線地圖' : '位置地圖'}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`
+                    : '<p>離線時看不到地圖，連上網路後再打開。</p>'}
+            </div>
+            <p class="sheet-route">${map.route ? `路線：${esc(origin)} → ${esc(placeOf(item))}` : `位置：${esc(placeOf(item))}`}</p>
+            <a class="btn solid" href="${esc(map.url)}" target="_blank" rel="noopener">${map.route ? '在 Google Maps 開啟這段路線' : '在 Google Maps 開啟'}</a>
+            ${ownLink ? `<a class="btn" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(openLabel(item.urlLabel))}</a>` : ''}
             ${spot ? `<p class="sheet-intro">${esc(spot.intro)}</p>` : ''}
             ${item.notes ? `<p class="sheet-notes">${esc(item.notes)}</p>` : ''}
             ${task ? `
@@ -354,7 +402,7 @@
                     <span>${esc(task.title)}${!Store.isChecked(task.id) && task.hard ? `<small>${shortDate(task.due)} 截止</small>` : ''}</span>
                 </label>
                 ${task.url ? `<a class="btn" href="${esc(task.url)}" target="_blank" rel="noopener">${esc(openLabel(task.urlLabel))}</a>` : ''}` : ''}
-            <a class="btn solid" href="https://www.google.com/maps/dir/?api=1&destination=${destination}" target="_blank" rel="noopener">用 Google Maps 導航</a>
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${destination}" target="_blank" rel="noopener">從目前位置導航</a>
             <div class="sheet-actions">
                 <button class="btn" data-action="edit" data-item="${esc(item.id)}">編輯</button>
                 <button class="btn danger-outline" data-action="delete" data-item="${esc(item.id)}">刪除</button>
