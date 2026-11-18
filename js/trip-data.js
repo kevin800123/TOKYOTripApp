@@ -1,7 +1,7 @@
 // 預設行程資料。改內容後把 seedVersion +1，沒手動編輯過的手機會自動換成新版。
 const TRIP = {
-    seedVersion: 5,
-    checkedOn: '2026/11/10',
+    seedVersion: 6,
+    checkedOn: '2026/11/18',
     start: '2027-02-07',
     end: '2027-02-13',
 
@@ -21,8 +21,8 @@ const TRIP = {
                   notes: '入境、領行李約 1 小時。\nVisit Japan Web 的 QR Code 先截圖，機場訊號不一定好。' },
                 { time: '20:45', category: '交通', name: 'Skyliner 到京成上野', location: '京成上野駅', transit: '約 45 分', task: 'skyliner',
                   notes: '在成田第 2・3 航廈站上車。\n查到的末班資料從 22:30 到 23:00 都有，飛機延誤時先看京成官網。' },
-                { time: '21:45', category: '住宿', spot: 'ueno', name: '上野飯店入住', location: '上野駅', task: 'hotel-ueno',
-                  notes: '飯店訂好後，點「編輯」把名稱和地圖關鍵字改成飯店的。' },
+                { time: '21:45', category: '住宿', spot: 'ueno', name: 'NOHGA HOTEL 上野入住', location: 'NOHGA HOTEL UENO TOKYO', task: 'hotel-ueno',
+                  notes: '從京成上野站步行約 10 分，行李多可以搭計程車。\n如果沒訂到，備案是 Hotel Resol 上野，訂好後點「編輯」改名稱和地圖關鍵字。' },
                 { time: '22:15', category: '飲食', spot: 'ramen', name: '宵夜：上野拉麵或超商', location: '上野 ラーメン', notes: '明天 09:30 才出門，可以睡飽。' },
             ],
         },
@@ -48,7 +48,7 @@ const TRIP = {
             station: '湯澤', kana: 'ゆざわ', roman: 'Gala Yuzawa', theme: '滑雪第一天，整天新手課',
             place: 'yuzawa', stay: '越後湯澤',
             items: [
-                { time: '07:00', category: '住宿', spot: 'ueno', name: '大行李寄放上野飯店', location: '上野駅', notes: '今晚住越後湯澤，明晚再回同一間飯店。' },
+                { time: '07:00', category: '住宿', spot: 'ueno', name: '大行李寄放 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', notes: '今晚住越後湯澤，明晚再回同一間飯店。' },
                 { time: '07:30', category: '交通', name: '新幹線：上野到 GALA 湯澤', location: 'ガーラ湯沢駅', transit: '約 70 分', task: 'shinkansen',
                   notes: 'GALA 站是雪季限定，不是每班都停，訂票時要確認。' },
                 { time: '09:00', category: '滑雪', spot: 'gala', name: '換雪票、租雪具、寄物', location: 'GALA湯沢スキー場', task: 'gala-ticket',
@@ -57,7 +57,7 @@ const TRIP = {
                 { time: '12:00', category: '飲食', spot: 'gala', name: '雪場午餐', location: 'GALA湯沢スキー場' },
                 { time: '13:00', category: '滑雪', spot: 'gala_slope', name: '新手課：下午', location: 'GALA湯沢スキー場', notes: '累了就提早收，明天還要滑。' },
                 { time: '16:00', category: '交通', name: '還雪具，前往越後湯澤', location: '越後湯沢駅', transit: '約 10 分', notes: '新幹線一站或接駁巴士，接駁班表到現場看。\n雪具若要連兩天租，問櫃台能不能寄放到明天。' },
-                { time: '16:30', category: '住宿', spot: 'yuzawa', name: '越後湯澤入住，泡溫泉', location: '越後湯沢駅', task: 'hotel-yuzawa', notes: '選有大浴場的旅館，滑完雪最需要。' },
+                { time: '16:30', category: '住宿', spot: 'yuzawa', name: '湯沢グランドホテル入住，泡溫泉', location: '湯沢グランドホテル 越後湯沢', task: 'hotel-yuzawa', notes: '越後湯澤站西口步行約 2 分，有露天風呂。\n晚餐是自助餐，訂房時看方案有沒有含。' },
                 { time: '18:30', category: '飲食', spot: 'ponshukan', name: '晚餐：魚沼米和在地料理', location: '越後湯沢駅 ぽんしゅ館', notes: '車站內的ぽんしゅ館可以試喝新潟各家日本酒。' },
             ],
         },
@@ -72,7 +72,7 @@ const TRIP = {
                 { time: '13:00', category: '滑雪', spot: 'gala_slope', name: '最後兩小時', location: 'GALA湯沢スキー場', notes: '腿沒力時就停，新手受傷多半發生在最後一趟。' },
                 { time: '15:00', category: '滑雪', spot: 'gala', name: '還雪具、更衣', location: 'GALA湯沢スキー場' },
                 { time: '15:45', category: '交通', name: '新幹線：GALA 湯澤回上野', location: '上野駅', transit: '約 70 分', task: 'shinkansen' },
-                { time: '17:30', category: '住宿', spot: 'ueno', name: '回上野飯店，取大行李', location: '上野駅' },
+                { time: '17:30', category: '住宿', spot: 'ueno', name: '回 NOHGA HOTEL，取大行李', location: 'NOHGA HOTEL UENO TOKYO' },
                 { time: '18:30', category: '飲食', spot: 'yakiniku', name: '晚餐：上野燒肉或居酒屋', location: '上野 焼肉', notes: '明天 10:30 才出門，今晚可以放鬆吃。' },
             ],
         },
@@ -117,7 +117,7 @@ const TRIP = {
             items: [
                 { time: '09:00', category: '景點', spot: 'ueno_park', name: '上野公園、不忍池散步', location: '不忍池', tags: ['免費'], notes: '離飯店近，最後一天不用趕，可以睡飽再出門。' },
                 { time: '10:30', category: '購物', spot: 'ameyoko', name: '阿美橫町補貨', location: 'アメヤ横丁', notes: '肉乾、含肉零食不要買，帶不回台灣。' },
-                { time: '12:00', category: '住宿', spot: 'ueno', name: '回飯店拿行李', location: '上野駅' },
+                { time: '12:00', category: '住宿', spot: 'ueno', name: '回飯店拿行李', location: 'NOHGA HOTEL UENO TOKYO' },
                 { time: '12:30', category: '交通', name: 'Skyliner 到成田第 1 航廈', location: '成田国際空港 第1ターミナル', transit: '約 45 分', task: 'skyliner', notes: '坐到終點站「成田機場」。樂桃在第 1 航廈北翼。' },
                 { time: '14:00', category: '交通', spot: 'narita_t1', name: '樂桃報到、託運', location: '成田国際空港 第1ターミナル 北ウイング', tags: ['樂桃'],
                   notes: '櫃台截止時間以樂桃訂位資訊為準。\n手提含免稅品合計約 7 公斤、行動電源隨身帶。' },
@@ -131,8 +131,10 @@ const TRIP = {
           detail: '兩人兩天。每張 ¥4,800，現場 ¥8,000。這個價格來自第三方指南，買前到官網核對；電子券不可退。' },
         { id: 'gala-lesson', title: '訂新手課', due: '2026-12-15', url: 'https://gala.co.jp/winter/', urlLabel: 'GALA 官網',
           detail: '上一季私人課 12/1 開放預約。GALA 有沒有中文教練還查不到；沒有的話，岩原、中里有中英文私人課，Klook 標價 ¥33,000 含租借接送。' },
-        { id: 'hotel-yuzawa', title: '訂越後湯澤 2/9 一晚', due: '2026-12-15', detail: '選車站附近、有大浴場的旅館，雪季平日也可能客滿。' },
-        { id: 'hotel-ueno', title: '訂上野飯店 2/7-9、2/10-13', due: '2026-12-15', detail: '分兩段訂同一間，並先問 2/9 能不能寄放行李。' },
+        { id: 'hotel-yuzawa', title: '訂湯沢グランドホテル 2/9 一晚', due: '2026-12-15', url: 'https://www.jalan.net/yad322925/', urlLabel: 'じゃらん',
+          detail: 'Google 約 4.2 星。查到兩人一晚 ¥16,380 起，含晚餐的方案會超過每晚 NT$5,500。秋田縣也有同名飯店，訂之前確認是新潟縣湯澤町。備案：いなもと（Google 約 4.1，站前步行 2 分）。' },
+        { id: 'hotel-ueno', title: '訂 NOHGA HOTEL 上野 2/7-9、2/10-13', due: '2026-12-15', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網',
+          detail: 'Google 約 4.5 星，設計旅館，和在地工藝職人合作。查到兩人一晚 ¥19,845 起，2/10 是假日前一晚會比較貴。分兩段訂，並先問 2/9 能不能寄放行李。備案：Hotel Resol 上野（Google 約 4.4，兩人約 ¥15,000 起）。' },
         { id: 'musashino', title: '預約三得利武藏野啤酒廠 2/12', due: '2027-01-15', url: 'https://www.suntory.co.jp/factory/musashino/', urlLabel: '武藏野工廠官網',
           detail: '要在官網預約。每人約 ¥1,000（2024 年的價格），含試飲。2/12 週五有沒有開放還沒確認，訂票時先看開放日曆；沒開放就和 2/8 對調。' },
         { id: 'shinkansen', title: '訂新幹線：2/9 去、2/10 回', due: '2027-01-25', url: 'https://www.jreast-timetable.jp/', urlLabel: 'JR 時刻表',
@@ -147,13 +149,13 @@ const TRIP = {
 
     // 金額都是兩人合計的日圓。checked: true 表示查得到價格來源，其餘是估算。
     budget: {
-        checkedOn: '2026/11/10',
+        checkedOn: '2026/11/18',
         rate: 0.215,
         rateNote: '1 日圓以 0.215 台幣換算。臺灣銀行 11/2 到 11/6 的現金賣出約 0.210 到 0.213，抓寬一點。',
         groups: [
             { name: '住宿', items: [
-                { name: '上野平價飯店 5 晚', low: 50000, high: 75000, note: '雙人房每晚抓 ¥10,000 到 ¥15,000，查到的是其他季節的房價，2/11 假日可能較貴，要早點訂。' },
-                { name: '越後湯澤 1 晚', low: 24000, high: 34000, note: '查到一家旅館每人約 ¥14,300 到 ¥15,400。訂含晚餐的方案，下面的晚餐可以少算一餐。' },
+                { name: 'NOHGA HOTEL 上野 5 晚', low: 100000, high: 128000, note: '每晚抓 ¥20,000 到 ¥25,600（NT$4,300 到 5,500）。查到 ¥19,845 起，不是 2 月的房價；換成備案 Resol 每晚約省 ¥5,000。' },
+                { name: '湯沢グランドホテル 1 晚', low: 16500, high: 25600, note: '查到兩人 ¥16,380 起。含晚餐自助餐的方案會超過上限，先抓不含晚餐，晚餐算在下面。' },
             ] },
             { name: '交通', items: [
                 { name: 'Skyliner 來回', low: 9000, high: 10400, checked: true, note: '官網票來回每人約 ¥4,500，現場買會貴一點。' },
