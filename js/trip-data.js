@@ -1,6 +1,6 @@
 // 預設行程資料。改內容後把 seedVersion +1，沒手動編輯過的手機會自動換成新版。
 const TRIP = {
-    seedVersion: 10,
+    seedVersion: 11,
     checkedOn: '2026/11/21',
     start: '2027-02-07',
     end: '2027-02-13',
@@ -76,7 +76,7 @@ const TRIP = {
         },
         {
             id: 4, iso: '2027-02-10', date: '2/10', dow: '三',
-            station: '岩原', kana: 'いわっぱら', roman: 'Iwappara', theme: '滑雪第一天，私人教練 5 小時',
+            station: '岩原', kana: 'いわっぱら', roman: 'Iwappara', theme: '滑雪第一天，中文私人教練 5 小時',
             place: 'yuzawa', stay: '高野屋',
             items: [
                 { time: '06:45', category: '住宿', spot: '', name: '大行李寄放 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網看飯店照片', notes: '今晚住岩原，明晚再回同一間飯店。' },
@@ -155,11 +155,11 @@ const TRIP = {
         { id: 'hotel-yuzawa', title: '訂高野屋 2/10 一晚', due: '2026-12-15', url: 'https://www.booking.com/hotel/jp/takanoya.zh-tw.html', urlLabel: 'Booking.com',
           detail: '日文名「浦子の湯 高野屋」，岩原スキー場前站步行約 3 分，到雪道 5 分內。じゃらん 4.4 分（351 則），Trip.com 8.3 分。查到每人素泊 ¥5,500 起；2/10 是假日前一晚，會比較貴。只有素泊和含早餐方案，沒有晚餐。選有獨立衛浴的房型，部分房間共用廁所。旅館可以到越後湯澤站東口接送（08:30 到 17:30，兩人以上，要先聯絡）。' },
         { id: 'ski-lesson', title: '跟私人教練確定 2/10 的 5 小時課', due: '2026-12-15',
-          detail: '已經找到教練，5 小時 ¥56,000。要問清楚：是兩人合計還是每人、上課時間和集合地點（建議在リゾートセンター2）、含不含雪票和租借、教練用什麼語言、下雪或生病的取消規定。' },
+          detail: '已經找到中文教練，5 小時 ¥56,000，不含雪票和租借，這兩項要自己買。還要問清楚：是兩人合計還是每人、上課時間和集合地點（建議在リゾートセンター2）、下雪或生病的取消規定。' },
         { id: 'iwappara-ticket', title: '買岩原 2 日入場券，兩張', due: '2027-01-31', url: 'https://iwa-ppara.com/price/', urlLabel: '岩原官網票價',
           detail: '大人 2 日入場券每張 ¥8,800，從第一天 08:00 用到第二天 17:00，今季票價和去年一樣。官網連到 asoview 可以先買，現場也買得到。' },
         { id: 'iwappara-rental', title: '預約岩原雪具租借', due: '2027-01-31', url: 'https://iwa-ppara.com/rental/', urlLabel: '岩原官網租借',
-          detail: '大人全套（雪衣褲、雪板、雪鞋、雪杖）2 天每人 ¥13,000，可以在官網先填申請，現場比較快。教練課如果已含租借就不用另租。手套、雪鏡、毛帽不出租，現場買每樣 ¥2,980 起。' },
+          detail: '大人全套（雪衣褲、雪板、雪鞋、雪杖）2 天每人 ¥13,000，可以在官網先填申請，現場比較快。2/10 09:30 就要上課，一定要先申請。手套、雪鏡、毛帽不出租，現場買每樣 ¥2,980 起。' },
         { id: 'hotel-ueno', title: '訂 NOHGA HOTEL 上野 2/7-10、2/11-13', due: '2026-12-15', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網看飯店照片',
           detail: 'Google 約 4.5 星，設計旅館，和在地工藝職人合作。查到兩人一晚 ¥19,845 起。分兩段訂，並先問 2/10 能不能寄放行李。備案：Hotel Resol 上野（Google 約 4.4，兩人約 ¥15,000 起）。' },
         { id: 'musashino', title: '預約三得利武藏野啤酒廠 2/12', due: '2027-01-15', url: 'https://www.suntory.co.jp/factory/musashino/', urlLabel: '武藏野工廠官網',
@@ -192,9 +192,9 @@ const TRIP = {
             ] },
             { name: '滑雪', items: [
                 { name: '岩原 2 日入場券 2 張', low: 17600, high: 17600, checked: true, note: '大人每張 ¥8,800，官網 2026-27 季票價。' },
-                { name: '租全套雪具和雪衣褲，兩人兩天', low: 26000, high: 26000, checked: true, note: '官網大人全套 2 天每人 ¥13,000。教練課如果含租借，這項可以省下來。' },
+                { name: '租全套雪具和雪衣褲，兩人兩天', low: 26000, high: 26000, checked: true, note: '官網大人全套 2 天每人 ¥13,000。教練課不含租借。' },
                 { name: '手套、雪鏡、毛帽', low: 0, high: 18000, note: '岩原不出租，台灣先準備最省；現場買每樣 ¥2,980 起。' },
-                { name: '私人教練 5 小時', low: 56000, high: 56000, checked: true, note: '你們找到的教練報價，先當作兩人合計。如果是每人，這項要乘兩倍。' },
+                { name: '私人教練 5 小時', low: 56000, high: 56000, checked: true, note: '你們找到的中文教練報價，不含雪票和租借。先當作兩人合計，如果是每人，這項要乘兩倍。' },
             ] },
             { name: '體驗', items: [
                 { name: '三得利武藏野啤酒廠導覽', low: 2000, high: 3000, checked: true, note: '2024 年的價格是每人 ¥1,000，含試飲 3 杯，以官網為準。' },
