@@ -1,7 +1,7 @@
 // 預設行程資料。改內容後把 seedVersion +1，沒手動編輯過的手機會自動換成新版。
 const TRIP = {
-    seedVersion: 9,
-    checkedOn: '2026/11/20',
+    seedVersion: 10,
+    checkedOn: '2026/11/21',
     start: '2027-02-07',
     end: '2027-02-13',
 
@@ -76,7 +76,7 @@ const TRIP = {
         },
         {
             id: 4, iso: '2027-02-10', date: '2/10', dow: '三',
-            station: '岩原', kana: 'いわっぱら', roman: 'Iwappara', theme: '滑雪第一天，中文私人課',
+            station: '岩原', kana: 'いわっぱら', roman: 'Iwappara', theme: '滑雪第一天，私人教練 5 小時',
             place: 'yuzawa', stay: '高野屋',
             items: [
                 { time: '06:45', category: '住宿', spot: '', name: '大行李寄放 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網看飯店照片', notes: '今晚住岩原，明晚再回同一間飯店。' },
@@ -86,9 +86,9 @@ const TRIP = {
                   notes: '東口出站右轉，沿著拱廊走，過斑馬線就是乘車處，不用預約。\n平日去程：07:45、08:15、08:45、09:15、10:00，下車選「リゾートセンター2」。' },
                 { time: '09:00', category: '滑雪', spot: 'iwappara', name: '換雪票、租雪具、寄物', location: '岩原スキー場 リゾートセンター2', task: 'iwappara-ticket',
                   notes: '中腹的リゾートセンター2 在初學者緩坡前面，有租借、更衣室和投幣置物櫃。\n租兩天的話，問櫃台雪具能不能帶回旅館，高野屋有放雪具的地方。置物櫃只能當天用。' },
-                { time: '10:00', category: '滑雪', spot: 'iwappara', name: '中文私人課：上午', location: '岩原スキー場 リゾートセンター2', task: 'ski-lesson', notes: '上課時間和集合地點以預約確認信為準，訂好後在這裡改。' },
+                { time: '09:30', category: '滑雪', spot: 'iwappara', name: '私人教練課：上午', location: '岩原スキー場 リゾートセンター2', task: 'ski-lesson', notes: '5 小時先抓上午 2 個半小時、下午 2 個半小時，中間吃午餐。\n實際時間和集合地點以教練說的為準，確定後在這裡改。' },
                 { time: '12:00', category: '飲食', spot: 'iwappara', name: '雪場午餐', location: '岩原スキー場 リゾートセンター2' },
-                { time: '13:00', category: '滑雪', spot: 'iwappara', name: '下午：自己練習或繼續上課', location: '岩原スキー場', notes: '在中腹的寬緩坡練習就好。累了就提早收，明天還要滑。' },
+                { time: '13:00', category: '滑雪', spot: 'iwappara', name: '私人教練課：下午', location: '岩原スキー場', notes: '請教練最後教怎麼搭纜車、怎麼安全下山，明天自己滑會比較放心。' },
                 { time: '15:30', category: '滑雪', spot: 'iwappara', name: '下山到山腳', location: '岩原スキー場 リゾートセンター1', notes: '回山腳的最後一段是中級道，新手不要硬滑。\n第 1 ペアリフト可以免費搭下山，或搭接駁車到リゾートセンター1。' },
                 { time: '16:00', category: '住宿', spot: '', name: '高野屋入住，泡溫泉', location: '浦子の湯 高野屋 湯沢町土樽', task: 'hotel-yuzawa',
                   url: 'https://www.booking.com/hotel/jp/takanoya.zh-tw.html', urlLabel: 'Booking.com 看旅館照片',
@@ -106,7 +106,7 @@ const TRIP = {
                 { time: '08:45', category: '住宿', spot: '', name: '高野屋退房，走到雪場', location: '岩原スキー場 リゾートセンター1',
                   url: 'https://www.booking.com/hotel/jp/takanoya.zh-tw.html', urlLabel: 'Booking.com 看旅館照片',
                   notes: '小包放雪場置物櫃，下午直接從雪場回東京。\n今天是日本國定假日，人會比較多，假日纜車大約排 15 分鐘。' },
-                { time: '09:15', category: '滑雪', spot: 'iwappara', name: '自己練習', location: '岩原スキー場 リゾートセンター2', notes: '第一天學得順就自己滑，還抓不到可以再上課。\n假日官方有日語團體課，中文課要另外約。' },
+                { time: '09:15', category: '滑雪', spot: 'iwappara', name: '自己練習', location: '岩原スキー場 リゾートセンター2', notes: '第一天學得順就自己滑，還抓不到可以再上課。\n假日人多，在緩坡練習時多注意後方的人。' },
                 { time: '12:00', category: '飲食', spot: 'iwappara', name: '雪場午餐', location: '岩原スキー場 リゾートセンター2', notes: '假日中午餐廳人多，可以 11:30 先吃。' },
                 { time: '13:00', category: '滑雪', spot: 'iwappara', name: '最後兩小時', location: '岩原スキー場', notes: '腿沒力時就停，新手受傷多半發生在最後一趟。' },
                 { time: '15:00', category: '滑雪', spot: 'iwappara', name: '還雪具、更衣', location: '岩原スキー場 リゾートセンター2' },
@@ -154,12 +154,12 @@ const TRIP = {
     tasks: [
         { id: 'hotel-yuzawa', title: '訂高野屋 2/10 一晚', due: '2026-12-15', url: 'https://www.booking.com/hotel/jp/takanoya.zh-tw.html', urlLabel: 'Booking.com',
           detail: '日文名「浦子の湯 高野屋」，岩原スキー場前站步行約 3 分，到雪道 5 分內。じゃらん 4.4 分（351 則），Trip.com 8.3 分。查到每人素泊 ¥5,500 起；2/10 是假日前一晚，會比較貴。只有素泊和含早餐方案，沒有晚餐。選有獨立衛浴的房型，部分房間共用廁所。旅館可以到越後湯澤站東口接送（08:30 到 17:30，兩人以上，要先聯絡）。' },
-        { id: 'ski-lesson', title: '訂岩原中文私人課 2/10', due: '2026-12-15', url: 'https://www.klook.com/activity/191939-yuzawa-iwappara-ski-resort-private-chinese-ski-snowboard-lesson/', urlLabel: 'Klook 岩原中文課',
-          detail: '岩原官方滑雪學校只用日語教學，平日沒有團體課，所以找中文私人課。查到湯澤一帶中英文私人課含租借接送 ¥33,000 起（Klook 4.6 分，58 則）；課程長度、兩人怎麼計價、含不含租借，訂之前要看清楚。官方日語私人課 2 人 120 分鐘 ¥30,000，只能打電話訂。' },
+        { id: 'ski-lesson', title: '跟私人教練確定 2/10 的 5 小時課', due: '2026-12-15',
+          detail: '已經找到教練，5 小時 ¥56,000。要問清楚：是兩人合計還是每人、上課時間和集合地點（建議在リゾートセンター2）、含不含雪票和租借、教練用什麼語言、下雪或生病的取消規定。' },
         { id: 'iwappara-ticket', title: '買岩原 2 日入場券，兩張', due: '2027-01-31', url: 'https://iwa-ppara.com/price/', urlLabel: '岩原官網票價',
           detail: '大人 2 日入場券每張 ¥8,800，從第一天 08:00 用到第二天 17:00，今季票價和去年一樣。官網連到 asoview 可以先買，現場也買得到。' },
         { id: 'iwappara-rental', title: '預約岩原雪具租借', due: '2027-01-31', url: 'https://iwa-ppara.com/rental/', urlLabel: '岩原官網租借',
-          detail: '大人全套（雪衣褲、雪板、雪鞋、雪杖）2 天每人 ¥13,000，可以在官網先填申請，現場比較快。中文私人課如果已含租借就不用另租。手套、雪鏡、毛帽不出租，現場買每樣 ¥2,980 起。' },
+          detail: '大人全套（雪衣褲、雪板、雪鞋、雪杖）2 天每人 ¥13,000，可以在官網先填申請，現場比較快。教練課如果已含租借就不用另租。手套、雪鏡、毛帽不出租，現場買每樣 ¥2,980 起。' },
         { id: 'hotel-ueno', title: '訂 NOHGA HOTEL 上野 2/7-10、2/11-13', due: '2026-12-15', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網看飯店照片',
           detail: 'Google 約 4.5 星，設計旅館，和在地工藝職人合作。查到兩人一晚 ¥19,845 起。分兩段訂，並先問 2/10 能不能寄放行李。備案：Hotel Resol 上野（Google 約 4.4，兩人約 ¥15,000 起）。' },
         { id: 'musashino', title: '預約三得利武藏野啤酒廠 2/12', due: '2027-01-15', url: 'https://www.suntory.co.jp/factory/musashino/', urlLabel: '武藏野工廠官網',
@@ -192,9 +192,9 @@ const TRIP = {
             ] },
             { name: '滑雪', items: [
                 { name: '岩原 2 日入場券 2 張', low: 17600, high: 17600, checked: true, note: '大人每張 ¥8,800，官網 2026-27 季票價。' },
-                { name: '租全套雪具和雪衣褲，兩人兩天', low: 26000, high: 26000, checked: true, note: '官網大人全套 2 天每人 ¥13,000。中文課如果含租借，這項可以省下來。' },
+                { name: '租全套雪具和雪衣褲，兩人兩天', low: 26000, high: 26000, checked: true, note: '官網大人全套 2 天每人 ¥13,000。教練課如果含租借，這項可以省下來。' },
                 { name: '手套、雪鏡、毛帽', low: 0, high: 18000, note: '岩原不出租，台灣先準備最省；現場買每樣 ¥2,980 起。' },
-                { name: '中文私人課', low: 33000, high: 66000, note: 'Klook 湯澤一帶中英文私人課 ¥33,000 起，兩天都上課就抓兩倍。' },
+                { name: '私人教練 5 小時', low: 56000, high: 56000, checked: true, note: '你們找到的教練報價，先當作兩人合計。如果是每人，這項要乘兩倍。' },
             ] },
             { name: '體驗', items: [
                 { name: '三得利武藏野啤酒廠導覽', low: 2000, high: 3000, checked: true, note: '2024 年的價格是每人 ¥1,000，含試飲 3 杯，以官網為準。' },
