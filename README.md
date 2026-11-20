@@ -1,6 +1,6 @@
 # 東京行 2027 (Tokyo Trip App)
 
-2027/2/7 到 2/13 的東京行程 PWA。兩天 GALA 湯澤滑雪，其他天都在東京市內：下北澤、谷中、武藏野啤酒廠、神樂坂。純 HTML、CSS、JavaScript，沒有建置流程，資料存在手機的 localStorage。
+2027/2/7 到 2/13 的東京行程 PWA。兩天岩原滑雪（越後湯澤），其他天都在東京市內：下北澤、谷中、武藏野啤酒廠、神樂坂。純 HTML、CSS、JavaScript，沒有建置流程，資料存在手機的 localStorage。
 
 架構參考 `日本福岡旅遊APP/FukuokaTripApp`。
 

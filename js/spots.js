@@ -21,25 +21,15 @@ const SPOTS = {
         intro: '上野車站周邊拉麵店很密集，不少開到深夜。多數店家在門口的食券機點餐，先買票再入座。',
         credit: { author: 'Ominae', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hakata_ramen_bowl_closeup.jpg' },
     },
-    gala: {
-        name: 'GALA 湯澤雪場中心', photo: 'photos/gala.webp',
-        intro: '雪季限定的 GALA 湯澤站直接連著雪場中心，走出驗票口就能換票、租雪具、寄物和吃飯，是少數新幹線可以直達的滑雪場。',
-        credit: { author: 'Roodee', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Gala_Yuzawa_03.jpg' },
-    },
-    gala_slope: {
-        name: 'GALA 湯澤雪道', photo: 'photos/gala_slope.webp',
-        intro: '雪道在山上，要從雪場中心搭纜車上去，新手課和緩坡都在上面。天氣好時可以看到越後一帶連綿的雪山。',
-        credit: { author: 'Syced', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Gala-Yuzawa_(94209).jpg' },
+    iwappara: {
+        name: '岩原滑雪場', photo: 'photos/iwappara.webp',
+        intro: '越後湯澤站搭免費接駁車約 10 分鐘。中腹有一大片又寬又緩的初學者坡，最緩的地方只有 6 度，視野開闊沒有障礙物，很適合第一次滑雪。照片是 2004 年 2 月拍的。',
+        credit: { author: 'Famifamifami', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Iwappara.jpg' },
     },
     yuzawa: {
         name: '越後湯澤溫泉', photo: 'photos/yuzawa.webp',
         intro: '川端康成小說《雪國》的舞台，車站周邊溫泉旅館很多。這一帶是日本有名的豪雪地帶，冬天路旁常堆著高高的雪牆。',
         credit: { author: 'Abasaa', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Entrance_to_Echigo-Yuzawa_Onsen.JPG' },
-    },
-    yuzawa_grand: {
-        name: '湯沢グランドホテル', photo: 'photos/yuzawa_grand.webp',
-        intro: '越後湯澤站西口旁的溫泉飯店，屋頂招牌上的「季里の湯」是館內溫泉的名字。有大浴場和庭園露天風呂，晚餐是和洋中自助餐。照片是 2023 年 3 月拍的，雪季後期的樣子。',
-        credit: { author: 'Syced', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Yuzawa_Grand_Hotel_2.jpg' },
     },
     ponshukan: {
         name: 'ぽんしゅ館', photo: 'photos/ponshukan.webp',
