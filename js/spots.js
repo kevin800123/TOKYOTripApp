@@ -18,7 +18,7 @@ const SPOTS = {
     },
     ramen: {
         name: '拉麵', photo: 'photos/ramen.webp', sample: true,
-        intro: '上野車站周邊拉麵店很密集，不少開到深夜。多數店家在門口的食券機點餐，先買票再入座。',
+        intro: '池袋是東京有名的拉麵激戰區，車站東口一帶店家很密集，不少開到深夜。多數店家在門口的食券機點餐，先買票再入座。',
         credit: { author: 'Ominae', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Hakata_ramen_bowl_closeup.jpg' },
     },
     iwappara: {
@@ -50,16 +50,6 @@ const SPOTS = {
         name: '代官山 T-SITE', photo: 'photos/daikanyama.webp',
         intro: '蔦屋書店由三棟相連的建築組成，書、音樂、電影和咖啡都在同一個空間。周邊是安靜的住宅區和小店，適合散步。',
         credit: { author: 'Jonathan Lin', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Daikanyama_T-SITE_2016-04-04.jpg' },
-    },
-    kagurazaka: {
-        name: '神樂坂', photo: 'photos/kagurazaka.webp',
-        intro: '過去是東京的花街，大路旁的窄巷裡還留著石板路和料亭。かくれんぼ橫丁的意思是「捉迷藏巷」，巷子窄到人一轉彎就不見了。',
-        credit: { author: 'Yasuhiro from Tokyo, Japan', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Kagurazaka_Tokyo_Japan.jpg' },
-    },
-    whisky: {
-        name: '日本威士忌', photo: 'photos/whisky.webp', sample: true,
-        intro: 'Mizunara 是日本橡木「水楢」的名字，用它做的酒桶會帶來像沉香的氣味，是日本威士忌的招牌特色。酒單很長時，可以請店員依喜好推薦。',
-        credit: { author: 'cegoh', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:Bar_Yamazaki.jpg' },
     },
     ameyoko: {
         name: '阿美橫町', photo: 'photos/ameyoko.webp',
@@ -96,20 +86,10 @@ const SPOTS = {
         intro: '三得利位於東京府中的啤酒廠，The Premium Malts 就在這裡釀造。導覽會介紹原料和釀造過程，最後試飲剛做好的啤酒。',
         credit: { author: 'Fuchu', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Suntory.musashino.beer.brewery.fuchu.tokyo_01.jpg' },
     },
-    koishikawa: {
-        name: '小石川後樂園', photo: 'photos/koishikawa.webp',
-        intro: '水戶德川家在江戶時代初期建造的大名庭園，在東京巨蛋旁邊就能看到一大片池水和林木。園內約有 150 棵梅樹，2 月是賞梅的季節。',
-        credit: { author: '江戸村のとくぞう (Edomura no Tokuzo)', license: 'CC BY-SA 3.0', url: 'https://commons.wikimedia.org/wiki/File:%E5%B0%8F%E7%9F%B3%E5%B7%9D%E5%BE%8C%E6%A5%BD%E5%9C%92%E3%83%BC%EF%BC%91.JPG' },
-    },
     ebisu: {
         name: '惠比壽花園廣場', photo: 'photos/ebisu.webp',
         intro: '由札幌啤酒工廠舊址改建的複合設施。塔樓 38 樓的 SKY LOUNGE 免費開放，白天晚上都能看東京市區的景色，傍晚最漂亮。照片是從這棟樓往澀谷、新宿方向拍的。',
         credit: { author: 'Ximonic (Simo Räsänen)', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Shibuya_and_Shinjuku_from_Yebisu_Garden_Place_Tower,_Ebisu,_Tokyo,_Japan,_2024_May.jpg' },
-    },
-    ueno_park: {
-        name: '上野公園不忍池', photo: 'photos/ueno_park.webp',
-        intro: '上野恩賜公園是日本最早的公園之一，博物館和美術館都在這裡。不忍池中央的小島上有弁天堂，環池散步一圈不用太久，冬天能看到水鳥。',
-        credit: { author: 'Guilhem Vellut from Annecy, France', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Shinobazu_Pond_@_Ueno_Park_(14041716455).jpg' },
     },
     matcha: {
         name: '抹茶甜點', photo: 'photos/matcha.webp', sample: true,
@@ -130,6 +110,11 @@ const SPOTS = {
         name: '合羽橋道具街', photo: 'photos/kappabashi.webp',
         intro: '上野和淺草之間約 800 公尺長的廚具街，賣刀具、餐具和食物模型。飯田屋是這裡的老牌料理道具店，1912 年創業，店內有超過 8,500 種廚具。',
         credit: { author: 'Basile Morin', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Kappabashi-dori_streetcorner_(Kitchen_town_-_southern_end)_a_sunny_morning_in_Tokyo_Japan.jpg' },
+    },
+    ikebukuro: {
+        name: '池袋', photo: 'photos/ikebukuro.webp',
+        intro: '東京西北邊的大型轉運站，車站兩側是西武和東武百貨。東口的陽光 60 通是購物街，走到底就是有水族館和寶可夢中心的サンシャインシティ。',
+        credit: { author: 'mroach', license: 'CC BY-SA 2.0', url: 'https://commons.wikimedia.org/wiki/File:Ikebukuro_3.jpg' },
     },
     izakaya: {
         name: '居酒屋', photo: 'photos/izakaya.webp', sample: true,

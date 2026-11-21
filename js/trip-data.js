@@ -1,6 +1,6 @@
 // 預設行程資料。改內容後把 seedVersion +1，沒手動編輯過的手機會自動換成新版。
 const TRIP = {
-    seedVersion: 14,
+    seedVersion: 15,
     checkedOn: '2026/11/21',
     start: '2027-02-07',
     end: '2027-02-13',
@@ -126,7 +126,7 @@ const TRIP = {
         },
         {
             id: 6, iso: '2027-02-12', date: '2/12', dow: '五',
-            station: '武藏野', kana: 'むさしの', roman: 'Musashino', theme: '啤酒廠、牛舌、剪紙御朱印，夜晚神樂坂',
+            station: '武藏野', kana: 'むさしの', roman: 'Musashino', theme: '啤酒廠、牛舌、御朱印，下午池袋購物',
             place: 'tokyo', stay: 'NOHGA HOTEL 上野',
             items: [
                 { time: '09:00', category: '交通', name: '上野到分倍河原', location: '分倍河原駅', transit: '約 1 小時', notes: '山手線到新宿，轉京王線。分倍河原站有免費接駁車到工廠，班次看官網。' },
@@ -137,12 +137,14 @@ const TRIP = {
                 { time: '13:45', category: '交通', name: '新宿到早稻田', location: '早稲田駅', transit: '約 15 分', notes: '山手線到高田馬場，轉東西線一站，出站走路約 2 分鐘。' },
                 { time: '14:00', category: '景點', spot: 'horinji', name: '法輪寺剪紙御朱印', location: '法輪寺 新宿区西早稲田', tags: ['老婆指定', '¥1,200'],
                   notes: '住持自己設計的剪紙御朱印，每個月換圖案，每張 ¥1,200。受理時間 09:00 到 12:30、13:00 到 16:00，沒有公休日。\n手水缽裡的季節花大約每週換一次，也很好拍。' },
-                { time: '14:45', category: '交通', name: '早稻田到飯田橋', location: '飯田橋駅', transit: '約 10 分', notes: '東西線兩站，出站走路約 8 分鐘到庭園。' },
-                { time: '15:00', category: '景點', spot: 'koishikawa', name: '小石川後樂園賞梅', location: '小石川後楽園', tags: ['¥300', '冬季限定'], notes: '09:00 到 17:00，最後入園 16:30，門票 ¥300。' },
-                { time: '16:30', category: '景點', spot: 'kagurazaka', name: '神樂坂散步', location: '神楽坂', tags: ['免費'], notes: '從庭園走路約 15 分鐘，先逛巷子再吃飯。' },
-                { time: '18:00', category: '飲食', spot: 'kagurazaka', name: '神樂坂巷弄晚餐', location: '神楽坂 かくれんぼ横丁', notes: '石板小巷裡有不少小店，熱門店先訂位。' },
-                { time: '20:00', category: '體驗', mark: '酒', spot: 'whisky', name: '威士忌吧 Mizunara', location: 'Mizunara 神楽坂 bar', task: 'mizunara', tags: ['特別體驗'], notes: '專賣日本威士忌，查到的資料寫週日和假日公休。' },
-                { time: '22:00', category: '交通', name: '回 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', transit: '約 25 分', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網看飯店照片' },
+                { time: '14:45', category: '交通', name: '早稻田到池袋', location: '池袋駅', transit: '約 15 分', notes: '東西線一站到高田馬場，轉山手線兩站。' },
+                { time: '15:00', category: '購物', spot: 'ikebukuro', name: '池袋東口逛街', location: 'サンシャインシティ', tags: ['購物'],
+                  notes: '從東口沿著陽光 60 通走到サンシャインシティ約 10 分鐘，沿路有唐吉訶德、Bic Camera、GU、無印良品。\nサンシャインシティ的商店街查到是 10:00 到 20:00，裡面有寶可夢中心。' },
+                { time: '17:30', category: '購物', spot: 'ikebukuro', name: '百貨公司地下街買伴手禮', location: '西武池袋本店', tags: ['購物'],
+                  notes: '池袋站東邊是西武、西邊是東武，地下樓層有和菓子、甜點和便當，可以買明天帶回台灣的伴手禮。\n老婆想吃的蔬菜造型麵包曾在東武池袋快閃，出發前看官網有沒有排到這幾天。' },
+                { time: '18:30', category: '飲食', spot: 'ramen', name: '晚餐：池袋拉麵', location: '池袋 ラーメン', notes: '池袋東口一帶拉麵店很多，挑排隊不長的就好。' },
+                { time: '19:45', category: '交通', name: '回 NOHGA HOTEL', location: 'NOHGA HOTEL UENO TOKYO', transit: '約 20 分', url: 'https://nohgahotel.com/ueno/', urlLabel: 'NOHGA 官網看飯店照片',
+                  notes: '山手線池袋到上野約 17 分鐘。明天 09:30 退房，今晚先把買的東西打包好。' },
             ],
         },
         {
@@ -185,7 +187,6 @@ const TRIP = {
         { id: 'insurance', title: '保旅平險，要涵蓋滑雪', due: '2027-02-05', detail: '滑雪常被列為除外或另外加保的活動，投保前看條款。' },
         { id: 'esim', title: '買 eSIM 或 Wi-Fi 分享器', due: '2027-02-05', detail: '雪場和機場都要查資料，抵達前就要能上網。' },
         { id: 'vjw', title: '填 Visit Japan Web', due: '2027-02-05', url: 'https://services.digital.go.jp/en/visit-japan-web/', urlLabel: 'Visit Japan Web', detail: '兩人各填一份，把入境和海關的 QR Code 截圖。' },
-        { id: 'mizunara', title: '確認 Mizunara 2/12 有營業', due: '2027-02-05', url: 'https://www.timeout.com/tokyo/bars-and-pubs/mizunara-in-tokyo', urlLabel: 'Time Out 介紹', detail: '營業資訊可能較舊，出發前再查一次。' },
     ],
 
     // 金額都是兩人合計的日圓。checked: true 表示查得到價格來源，其餘是估算。
@@ -213,14 +214,12 @@ const TRIP = {
             { name: '體驗', items: [
                 { name: '三得利武藏野啤酒廠導覽', low: 2000, high: 3000, checked: true, note: '2024 年的價格是每人 ¥1,000，含試飲 3 杯，以官網為準。' },
                 { name: '萩の湯錢湯', low: 1100, high: 1600, note: '每人約 ¥550，毛巾另計。查到的金額新舊不一。' },
-                { name: '小石川後樂園', low: 600, high: 600, checked: true, note: '每人 ¥300。' },
                 { name: '法輪寺剪紙御朱印 2 張', low: 2400, high: 2400, checked: true, note: '每張 ¥1,200，2025 年 4 月起的價格。' },
             ] },
             { name: '餐飲', items: [
                 { name: '早餐 6 天', low: 6000, high: 10000, note: '超商或咖啡店，每人每餐 ¥500 到 ¥800。' },
                 { name: '午餐 6 餐', low: 12000, high: 20000, note: '每人每餐 ¥1,000 到 ¥1,700，雪場偏貴。' },
                 { name: '晚餐和宵夜 6 餐', low: 24000, high: 42000, note: '以平價店為主，每人每餐 ¥2,000 到 ¥3,500。' },
-                { name: 'Mizunara 威士忌吧', low: 6000, high: 12000, note: '每人抓 2 杯，稀有酒款會貴很多。' },
                 { name: '咖啡和零食', low: 7000, high: 10000, note: '每人每天 ¥500 到 ¥700，含三軒茶屋的抹茶甜點。' },
             ] },
             { name: '其他', items: [
