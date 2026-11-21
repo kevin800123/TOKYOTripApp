@@ -50,6 +50,7 @@ const Store = (() => {
     }));
 
     let checks = read(CHECKS_KEY) || {};
+    const defaultChecked = (id) => Boolean(TRIP.tasks.find((t) => t.id === id)?.done);
     const findDay = (id) => doc.days.find((d) => d.id === id);
 
     function commit() {
@@ -112,13 +113,15 @@ const Store = (() => {
             write(KEY, doc);
         },
 
-        isChecked: (id) => Boolean(checks[id]),
+        // trip-data 裡標 done: true 的待辦預設打勾（已經訂好的），手機上取消勾選仍以手機為準。
+        isChecked: (id) => (id in checks ? Boolean(checks[id]) : defaultChecked(id)),
 
         toggleCheck(id) {
-            if (checks[id]) delete checks[id];
-            else checks[id] = true;
+            const next = !Store.isChecked(id);
+            if (next === defaultChecked(id)) delete checks[id];
+            else checks[id] = next;
             write(CHECKS_KEY, checks);
-            return Boolean(checks[id]);
+            return next;
         },
     };
 })();
