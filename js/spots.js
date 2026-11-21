@@ -111,6 +111,26 @@ const SPOTS = {
         intro: '上野恩賜公園是日本最早的公園之一，博物館和美術館都在這裡。不忍池中央的小島上有弁天堂，環池散步一圈不用太久，冬天能看到水鳥。',
         credit: { author: 'Guilhem Vellut from Annecy, France', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Shinobazu_Pond_@_Ueno_Park_(14041716455).jpg' },
     },
+    matcha: {
+        name: '抹茶甜點', photo: 'photos/matcha.webp', sample: true,
+        intro: '東京很多咖啡店把濃抹茶做成蛋糕、布丁和聖代。三軒茶屋的 THREE 是抹茶巴斯克乳酪蛋糕，同區還有抹茶奶油甜甜圈。',
+        credit: { author: 'Arnold Gatilao', license: 'CC BY 2.0', url: 'https://commons.wikimedia.org/wiki/File:Tokyo_Parfait_-_lots_of_matcha_with_adzuki_hidden_on_the_bottom._(14226988754).jpg' },
+    },
+    gyutan: {
+        name: '厚切牛舌', photo: 'photos/gyutan.webp', sample: true,
+        intro: '源自仙台的炭烤牛舌，通常配麥飯、牛尾湯和山藥泥做成定食。厚切的口感比較有嚼勁，搭檸檬或芥末一起吃。',
+        credit: { author: 'Captain76', license: 'Public domain', url: 'https://commons.wikimedia.org/wiki/File:Gyutan_teishoku.JPG' },
+    },
+    horinji: {
+        name: '法輪寺', photo: 'photos/horinji.webp',
+        intro: '早稻田站旁的曹洞宗寺院。住持親自設計剪紙御朱印，每個月換新圖案，手水缽也會放季節的花，是近年很紅的御朱印寺。',
+        credit: { author: 'Higa4', license: 'CC0', url: 'https://commons.wikimedia.org/wiki/File:H%C5%8Drin-ji_(Nishi-Waseda,_Shinjuku)_02.jpg' },
+    },
+    kappabashi: {
+        name: '合羽橋道具街', photo: 'photos/kappabashi.webp',
+        intro: '上野和淺草之間約 800 公尺長的廚具街，賣刀具、餐具和食物模型。飯田屋是這裡的老牌料理道具店，1912 年創業，店內有超過 8,500 種廚具。',
+        credit: { author: 'Basile Morin', license: 'CC BY-SA 4.0', url: 'https://commons.wikimedia.org/wiki/File:Kappabashi-dori_streetcorner_(Kitchen_town_-_southern_end)_a_sunny_morning_in_Tokyo_Japan.jpg' },
+    },
     izakaya: {
         name: '居酒屋', photo: 'photos/izakaya.webp', sample: true,
         intro: '日本的小酒館，點幾道小菜配酒，當晚餐吃也很划算。多數店入座後會先上一道收費的小菜（お通し），每人約幾百日圓，先有心理準備。',

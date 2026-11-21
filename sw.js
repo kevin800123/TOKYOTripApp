@@ -1,13 +1,14 @@
 // 改任何檔案後，把 VERSION +1，手機下次開啟就會換新。沒改版號，手機會一直用舊版。
 // 同一版的 HTML、CSS、JS 一律從同一份快取提供，避免新 HTML 配舊 JS 造成空白。
-const VERSION = 'v18';
+const VERSION = 'v19';
 const CACHE = `tokyo-trip-${VERSION}`;
 const FONT_CACHE = 'tokyo-trip-fonts';
 // 景點照片跟著安裝一起快取，在山上沒訊號也看得到。新增照片要加進這裡。
 const PHOTOS = [
-    'ameyoko', 'daikanyama', 'ebisu', 'iwappara', 'izakaya', 'kagurazaka', 'koishikawa',
-    'musashino', 'narita_t1', 'narita_t2', 'nezu', 'ponshukan', 'ramen', 'sento', 'shimokita',
-    'soup_curry', 'ueno', 'ueno_park', 'whisky', 'yakiniku', 'yanaka', 'yushima', 'yuzawa',
+    'ameyoko', 'daikanyama', 'ebisu', 'gyutan', 'horinji', 'iwappara', 'izakaya', 'kagurazaka',
+    'kappabashi', 'koishikawa', 'matcha', 'musashino', 'narita_t1', 'narita_t2', 'nezu', 'ponshukan',
+    'ramen', 'sento', 'shimokita', 'soup_curry', 'ueno', 'ueno_park', 'whisky', 'yakiniku', 'yanaka',
+    'yushima', 'yuzawa',
 ];
 const SHELL = [
     './',
